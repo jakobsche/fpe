@@ -596,6 +596,13 @@ object Form1: TForm1
         Caption = '&Gehe zu ...'
       end
     end
+    object MenuItem24: TMenuItem
+      Caption = '&Ansicht'
+      object ViewPhoto: TMenuItem
+        Caption = '&Foto'
+        OnClick = ViewPhotoClick
+      end
+    end
     object MenuItem1: TMenuItem
       Caption = '&Hilfe'
       object MenuItem3: TMenuItem

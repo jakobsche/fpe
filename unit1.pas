@@ -35,6 +35,8 @@ type
     MenuItem22: TMenuItem;
     MenuItem23: TMenuItem;
     HelpAbout: TMenuItem;
+    MenuItem24: TMenuItem;
+    ViewPhoto: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -61,6 +63,7 @@ type
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
     procedure SaveItemClick(Sender: TObject);
+    procedure ViewPhotoClick(Sender: TObject);
   private
     FFileName: string;
     procedure SetFileName(Value: string);
@@ -192,6 +195,19 @@ end;
 procedure TForm1.SaveItemClick(Sender: TObject);
 begin
   Save
+end;
+
+procedure TForm1.ViewPhotoClick(Sender: TObject);
+var
+  Bitmap: TBitmap;
+begin
+  Bitmap := GetFormImage;
+  try
+    SaveDialog.FileName := Name + '.bmp';
+    if SaveDialog.Execute then Bitmap.SaveToFile(SaveDialog.FileName)
+  finally
+    Bitmap.Free
+  end;
 end;
 
 procedure TForm1.SetFileName(Value: string);
