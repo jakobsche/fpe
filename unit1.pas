@@ -14,6 +14,7 @@ type
 
   TForm1 = class(TForm)
     MainMenu1: TMainMenu;
+    MenuItem1: TMenuItem;
     MenuItem10: TMenuItem;
     ExitItem: TMenuItem;
     MenuItem11: TMenuItem;
@@ -22,12 +23,20 @@ type
     EditCut: TMenuItem;
     EditCopy: TMenuItem;
     EditPaste: TMenuItem;
+    MenuItem14: TMenuItem;
+    MenuItem15: TMenuItem;
+    MenuItem16: TMenuItem;
     MenuItem17: TMenuItem;
     MenuItem18: TMenuItem;
     MenuItem19: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem20: TMenuItem;
     MenuItem21: TMenuItem;
+    MenuItem22: TMenuItem;
+    MenuItem23: TMenuItem;
+    HelpAbout: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
     NewItem: TMenuItem;
@@ -47,6 +56,7 @@ type
     procedure ExitItemClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
+    procedure HelpAboutClick(Sender: TObject);
     procedure NewItemClick(Sender: TObject);
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
@@ -65,7 +75,7 @@ var
 
 implementation
 
-uses FormEx;
+uses About, FormEx;
 
 {$R *.lfm}
 
@@ -74,6 +84,11 @@ uses FormEx;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   FormAdjust(Self)
+end;
+
+procedure TForm1.HelpAboutClick(Sender: TObject);
+begin
+  AboutBox.ShowModal
 end;
 
 procedure TForm1.ExitItemClick(Sender: TObject);
