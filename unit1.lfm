@@ -598,6 +598,27 @@ object Form1: TForm1
     end
     object MenuItem24: TMenuItem
       Caption = '&Ansicht'
+      object ViewHTML: TMenuItem
+        Caption = '&HTML'
+        OnClick = ViewSynClick
+      end
+      object ViewJS: TMenuItem
+        Caption = '&JavaScript'
+        ShowAlwaysCheckable = True
+        OnClick = ViewSynClick
+      end
+      object ViewPas: TMenuItem
+        Caption = '&Pascal'
+        ShowAlwaysCheckable = True
+        OnClick = ViewSynClick
+      end
+      object ViewXML: TMenuItem
+        Caption = '&XML'
+        OnClick = ViewSynClick
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
       object ViewPhoto: TMenuItem
         Caption = '&Foto'
         OnClick = ViewPhotoClick
@@ -644,10 +665,32 @@ object Form1: TForm1
   object SynPasSyn: TSynPasSyn
     DefaultFilter = 'Pascal-Quelltexte (*.pas,*.dpr,*.dpk,*.inc)|*.pas;*.dpr;*.dpk;*.lpr;*.inc'
     Enabled = False
-    CompilerMode = pcmTP
-    NestedComments = False
+    CommentAttri.Foreground = clBlue
+    CommentAttri.Style = [fsBold]
+    DirectiveAttri.Foreground = clRed
+    DirectiveAttri.Style = [fsBold]
+    CompilerMode = pcmObjFPC
+    NestedComments = True
     D4syntax = False
-    left = 251
-    top = 125
+    left = 24
+    top = 232
+  end
+  object SynJScriptSyn: TSynJScriptSyn
+    Enabled = False
+    left = 104
+    top = 232
+  end
+  object SynXMLSyn: TSynXMLSyn
+    DefaultFilter = 'XML-Dokumente (*.xml,*.xsd,*.xsl,*.xslt,*.dtd)|*.xml;*.xsd;*.xsl;*.xslt;*.dtd'
+    Enabled = False
+    WantBracesParsed = False
+    left = 192
+    top = 232
+  end
+  object SynHTMLSyn: TSynHTMLSyn
+    DefaultFilter = 'HTML-Dokumente (*.htm,*.html)|*.htm;*.html'
+    Enabled = False
+    left = 288
+    top = 232
   end
 end
