@@ -2,3 +2,7 @@
 backup
 lib
 deploy/x86_64-darwin
+deploy/i386-win32
+.directory
+deploy/x86_64-linux
+*.bak
