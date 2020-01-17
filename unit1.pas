@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, SynEdit,
   SynHighlighterPas, SynHighlighterJScript, SynHighlighterXML,
-  SynEditHighlighterFoldBase, SynHighlighterHTML;
+  SynEditHighlighterFoldBase, SynHighlighterHTML, SynHighlighterMulti,
+  SynEditHighlighter, SynHighlighterCpp;
 
 type
 
@@ -15,15 +16,15 @@ type
 
   THighlighterData = class(TComponent)
   private
-    FHighlighter: TSynCustomFoldHighlighter;
+    FHighlighter: TSynCustomHighLighter;
     FMenuItem: TMenuItem;
-    procedure SetHighlighter(AValue: TSynCustomFoldHighlighter);
+    procedure SetHighlighter(AValue: TSynCustomHighLighter);
     procedure SetMenuItem(AValue: TMenuItem);
   public
 
   published
     property MenuItem: TMenuItem read FMenuItem write SetMenuItem;
-    property Highlighter: TSynCustomFoldHighlighter read FHighlighter write SetHighlighter;
+    property Highlighter: TSynCustomHighLighter read FHighlighter write SetHighlighter;
   end;
 
   { THighlighterSwitch }
@@ -31,7 +32,10 @@ type
   THighlighterSwitch = class(TComponent)
   private
     FIL: TList;
+    FItemIndex: Integer;
     function GetItemList: TList;
+    procedure ReadItems(Reader: TReader);
+    procedure WriteItems(Writer: TWriter);
   private
     FSaveDialog: TSaveDialog;
     FSynEdit: TSynEdit;
@@ -40,14 +44,18 @@ type
     procedure SetSaveDialog(AValue: TSaveDialog);
     procedure SetSynEdit(AValue: TSynEdit);
     property ItemList: TList read GetItemList;
+  protected
+    procedure DefineProperties(Filer: TFiler); override;
   public
     destructor Destroy; override;
-    procedure AddItem(AnItem: TMenuItem; AHighlighter: TSynCustomFoldHighlighter);
+    procedure AddItem(AnItem: TMenuItem; AHighlighter: TSynCustomHighLighter);
     function GetItems(AnItem: TMenuItem): THighlighterData; overload;
     procedure Switch(AnItem: TMenuItem); overload;
     procedure Switch(AnIndex: Integer); overload;
     property ItemCount: Integer read GetItemCount;
     property Items[AnIndex: Integer]: THighlighterData read GetItems;
+  published
+    property ItemIndex: Integer read FItemIndex write FItemIndex;
     property SaveDialog: TSaveDialog read FSaveDialog write SetSaveDialog;
     property SynEdit: TSynEdit read FSynEdit write SetSynEdit;
   end;
@@ -80,15 +88,18 @@ type
     MenuItem23: TMenuItem;
     HelpAbout: TMenuItem;
     MenuItem24: TMenuItem;
+    SynCppSyn: TSynCppSyn;
+    SynMultiSyn: TSynMultiSyn;
+    ViewMulti: TMenuItem;
+    ViewCpp: TMenuItem;
+    ViewText: TMenuItem;
     ViewHTML: TMenuItem;
     SynHTMLSyn: TSynHTMLSyn;
     ViewXML: TMenuItem;
     SynXMLSyn: TSynXMLSyn;
     ViewPas: TMenuItem;
     ViewJS: TMenuItem;
-    N1: TMenuItem;
     SynJScriptSyn: TSynJScriptSyn;
-    ViewPhoto: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
@@ -110,22 +121,24 @@ type
     procedure ExitItemClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure HelpAboutClick(Sender: TObject);
     procedure NewItemClick(Sender: TObject);
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
     procedure SaveItemClick(Sender: TObject);
     procedure ViewSynClick(Sender: TObject);
-    procedure ViewPasClick(Sender: TObject);
-    procedure ViewPhotoClick(Sender: TObject);
-    procedure ViewXMLClick(Sender: TObject);
+    procedure ViewTextClick(Sender: TObject);
   private
     FFileName: string;
     procedure SetFileName(Value: string);
   public
     HLSwitch: THighlighterSwitch;
+    function GetConfigFileName: string;
     function Save: Boolean;
     function SaveAs: Boolean;
+    function GuessHighlighter: TSynCustomHighLighter;
+  published
     property FileName: string read FFileName write SetFileName;
   end;
 
@@ -134,7 +147,7 @@ var
 
 implementation
 
-uses About, FormEx;
+uses About, FormEx, Patch, Streaming2;
 
 {$R *.lfm}
 
@@ -144,6 +157,23 @@ function THighlighterSwitch.GetItemList: TList;
 begin
   if not Assigned(FIL) then FIL := TList.Create;
   Result := FIL
+end;
+
+procedure THighlighterSwitch.ReadItems(Reader: TReader);
+begin
+  Reader.ReadListBegin;
+  while not Reader.EndOfList do
+    ItemList.Add(Reader.ReadComponent(THighlighterData.Create(Self)));
+  Reader.ReadListEnd;
+end;
+
+procedure THighlighterSwitch.WriteItems(Writer: TWriter);
+var
+  i: Integer;
+begin
+  Writer.WriteListBegin;
+  for i := 0 to ItemCount - 1 do  Writer.WriteComponent(Items[i]);
+  Writer.WriteListEnd;
 end;
 
 function THighlighterSwitch.GetItems(AnIndex: Integer): THighlighterData;
@@ -172,6 +202,12 @@ begin
   if Assigned(AValue) then FreeNotification(AValue);
 end;
 
+procedure THighlighterSwitch.DefineProperties(Filer: TFiler);
+begin
+  inherited DefineProperties(Filer);
+  Filer.DefineProperty('Items', @ReadItems, @WriteItems, ItemCount > 0)
+end;
+
 destructor THighlighterSwitch.Destroy;
 begin
   FIL.Free;
@@ -191,7 +227,7 @@ begin
 end;
 
 procedure THighlighterSwitch.AddItem(AnItem: TMenuItem;
-  AHighlighter: TSynCustomFoldHighlighter);
+  AHighlighter: TSynCustomHighLighter);
 var
   HD: THighlighterData;
 begin
@@ -217,14 +253,19 @@ var
   i: Integer;
 begin
   if Assigned(SynEdit) then SynEdit.HighLighter := Items[AnIndex].Highlighter;
-  if Assigned(SaveDialog) then SaveDialog.Filter := Items[AnIndex].Highlighter.DefaultFilter;
+  if Assigned(Items[AnIndex].Highlighter) then
+    if Assigned(SaveDialog) then SaveDialog.Filter := Items[AnIndex].Highlighter.DefaultFilter;
   for i := 0 to ItemCount - 1 do
-    Items[i].MenuItem.Checked := i = AnIndex
+    if i = AnIndex then begin
+      Items[i].MenuItem.Checked := True;
+      ItemIndex := i
+    end
+    else Items[i].MenuItem.Checked := False;
 end;
 
 { THighliterData }
 
-procedure THighlighterData.SetHighlighter(AValue: TSynCustomFoldHighlighter);
+procedure THighlighterData.SetHighlighter(AValue: TSynCustomHighLighter);
 begin
   if FHighlighter = AValue then Exit;
   if Assigned(FHighlighter) then RemoveFreeNotification(FHighlighter);
@@ -253,8 +294,16 @@ begin
     AddItem(ViewPas, SynPasSyn);
     AddItem(ViewXML, SynXMLSyn);
     AddItem(ViewHTML, SynHTMLSyn);
+    AddItem(ViewMulti, SynMultiSyn);
+    AddItem(ViewCpp, SynCppSyn);
+    AddItem(ViewText, nil);
     Switch(ViewPas)
   end;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  WriteBinaryToFile(GetConfigFileName, Self)
 end;
 
 procedure TForm1.HelpAboutClick(Sender: TObject);
@@ -370,35 +419,9 @@ begin
   HLSwitch.Switch(Sender as TMenuItem)
 end;
 
-procedure TForm1.ViewPasClick(Sender: TObject);
+procedure TForm1.ViewTextClick(Sender: TObject);
 begin
-  SynEdit.Highlighter := SynPasSyn;
-  SaveDialog.Filter := SynPasSyn.DefaultFilter;
-  ViewPas.Checked := True;
-  ViewJS.Checked := False;
-  ViewXML.Checked := False;
-end;
 
-procedure TForm1.ViewPhotoClick(Sender: TObject);
-var
-  Bitmap: TBitmap;
-begin
-  Bitmap := GetFormImage;
-  try
-    SaveDialog.FileName := Name + '.bmp';
-    if SaveDialog.Execute then Bitmap.SaveToFile(SaveDialog.FileName)
-  finally
-    Bitmap.Free
-  end;
-end;
-
-procedure TForm1.ViewXMLClick(Sender: TObject);
-begin
-  SynEdit.Highlighter := SynXMLSyn;
-  SaveDialog.Filter := SynXMLSyn.DefaultFilter;
-  ViewXML.Checked := True;
-  ViewPas.Checked := False;
-  ViewJS.Checked := False;
 end;
 
 procedure TForm1.SetFileName(Value: string);
@@ -406,6 +429,13 @@ begin
   FFileName := Value;
   if Value <> '' then Caption := Value
   else Caption := 'Free Pascal Editor'
+end;
+
+function TForm1.GetConfigFileName: string;
+begin
+  Result := BuildFileName(Application.EnvironmentVariable['HOME'], '.config/fpe');
+  ForceDirectories(Result);
+  Result := ChangeFileExt(BuildFileName(Result, Name), '.cfg');
 end;
 
 function TForm1.Save: Boolean;
@@ -430,6 +460,13 @@ begin
     Result := True
   end
 end;
+
+function TForm1.GuessHighlighter: TSynCustomHighLighter;
+begin
+  Result := nil;
+end;
+
+initialization
 
 end.
 

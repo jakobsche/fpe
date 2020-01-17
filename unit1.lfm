@@ -9,6 +9,7 @@ object Form1: TForm1
   Menu = MainMenu1
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   Position = poDefault
   LCLVersion = '2.0.6.0'
   inline SynEdit: TSynEdit
@@ -598,8 +599,18 @@ object Form1: TForm1
     end
     object MenuItem24: TMenuItem
       Caption = '&Ansicht'
+      object ViewMulti: TMenuItem
+        Caption = '&Automatisch'
+        OnClick = ViewSynClick
+      end
+      object ViewCpp: TMenuItem
+        Caption = '&C++'
+        ShowAlwaysCheckable = True
+        OnClick = ViewSynClick
+      end
       object ViewHTML: TMenuItem
         Caption = '&HTML'
+        ShowAlwaysCheckable = True
         OnClick = ViewSynClick
       end
       object ViewJS: TMenuItem
@@ -612,16 +623,15 @@ object Form1: TForm1
         ShowAlwaysCheckable = True
         OnClick = ViewSynClick
       end
-      object ViewXML: TMenuItem
-        Caption = '&XML'
+      object ViewText: TMenuItem
+        Caption = '&Text'
+        ShowAlwaysCheckable = True
         OnClick = ViewSynClick
       end
-      object N1: TMenuItem
-        Caption = '-'
-      end
-      object ViewPhoto: TMenuItem
-        Caption = '&Foto'
-        OnClick = ViewPhotoClick
+      object ViewXML: TMenuItem
+        Caption = '&XML'
+        ShowAlwaysCheckable = True
+        OnClick = ViewSynClick
       end
     end
     object MenuItem1: TMenuItem
@@ -667,6 +677,7 @@ object Form1: TForm1
     Enabled = False
     CommentAttri.Foreground = clBlue
     CommentAttri.Style = [fsBold]
+    SymbolAttri.Foreground = clRed
     DirectiveAttri.Foreground = clRed
     DirectiveAttri.Style = [fsBold]
     CompilerMode = pcmObjFPC
@@ -691,6 +702,20 @@ object Form1: TForm1
     DefaultFilter = 'HTML-Dokumente (*.htm,*.html)|*.htm;*.html'
     Enabled = False
     left = 288
+    top = 232
+  end
+  object SynMultiSyn: TSynMultiSyn
+    Enabled = False
+    Schemes = <>
+    DefaultHighlighter = SynPasSyn
+    DefaultLanguageName = 'Pascal'
+    left = 376
+    top = 232
+  end
+  object SynCppSyn: TSynCppSyn
+    DefaultFilter = 'C++-Quelltexte (*.c,*.cpp,*.h,*.hpp,*.hh)|*.c;*.cpp;*.h;*.hpp;*.hh'
+    Enabled = False
+    left = 456
     top = 232
   end
 end
