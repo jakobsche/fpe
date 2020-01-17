@@ -1,4 +1,4 @@
 .DS_Store
 backup
 lib
-
+deploy/x86_64-darwin
