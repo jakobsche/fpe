@@ -1,20 +1,22 @@
 object Form1: TForm1
-  Left = 518
+  Left = 567
   Height = 429
-  Top = 170
+  Top = 201
   Width = 549
   Caption = 'Free Pascal Editor'
-  ClientHeight = 429
+  ClientHeight = 403
   ClientWidth = 549
   Menu = MainMenu1
+  OnActivate = FormActivate
+  OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poDefault
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   inline SynEdit: TSynEdit
     Left = 0
-    Height = 429
+    Height = 403
     Top = 0
     Width = 549
     Align = alClient
@@ -542,6 +544,11 @@ object Form1: TForm1
       object MenuItem10: TMenuItem
         Caption = '-'
       end
+      object FileClose: TMenuItem
+        Caption = '&Schließen'
+        ShortCut = 16499
+        OnClick = FileCloseClick
+      end
       object ExitItem: TMenuItem
         Caption = 'Beenden'
         ShortCut = 4211
@@ -601,6 +608,7 @@ object Form1: TForm1
       Caption = '&Ansicht'
       object ViewMulti: TMenuItem
         Caption = '&Automatisch'
+        ShowAlwaysCheckable = True
         OnClick = ViewSynClick
       end
       object ViewCpp: TMenuItem
@@ -632,6 +640,32 @@ object Form1: TForm1
         Caption = '&XML'
         ShowAlwaysCheckable = True
         OnClick = ViewSynClick
+      end
+    end
+    object MenuItem26: TMenuItem
+      Caption = 'Fenster'
+      object FormNew: TMenuItem
+        Caption = '&Neues Fenster'
+        OnClick = FormNewClick
+      end
+      object MenuItem28: TMenuItem
+        Caption = 'Kachel'
+        OnClick = MenuItem28Click
+      end
+      object MenuItem29: TMenuItem
+        Caption = 'Hintereinander'
+      end
+      object MenuItem30: TMenuItem
+        Caption = '&Alle anordnen'
+      end
+      object MenuItem31: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem32: TMenuItem
+        Caption = 'Verbergen'
+      end
+      object MenuItem33: TMenuItem
+        Caption = 'Anzeigen'
       end
     end
     object MenuItem1: TMenuItem
@@ -682,6 +716,7 @@ object Form1: TForm1
     DirectiveAttri.Style = [fsBold]
     CompilerMode = pcmObjFPC
     NestedComments = True
+    TypeHelpers = False
     D4syntax = False
     left = 24
     top = 232

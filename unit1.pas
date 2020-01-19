@@ -20,6 +20,9 @@ type
     FMenuItem: TMenuItem;
     procedure SetHighlighter(AValue: TSynCustomHighLighter);
     procedure SetMenuItem(AValue: TMenuItem);
+  protected
+    procedure Notification(AComponent: TComponent;
+      Operation: TOperation); override;
   public
 
   published
@@ -45,6 +48,8 @@ type
     procedure SetSynEdit(AValue: TSynEdit);
     property ItemList: TList read GetItemList;
   protected
+    procedure Notification(AComponent: TComponent;
+      Operation: TOperation); override;
     procedure DefineProperties(Filer: TFiler); override;
   public
     destructor Destroy; override;
@@ -88,6 +93,15 @@ type
     MenuItem23: TMenuItem;
     HelpAbout: TMenuItem;
     MenuItem24: TMenuItem;
+    FileClose: TMenuItem;
+    MenuItem26: TMenuItem;
+    FormNew: TMenuItem;
+    MenuItem28: TMenuItem;
+    MenuItem29: TMenuItem;
+    MenuItem30: TMenuItem;
+    MenuItem31: TMenuItem;
+    MenuItem32: TMenuItem;
+    MenuItem33: TMenuItem;
     SynCppSyn: TSynCppSyn;
     SynMultiSyn: TSynMultiSyn;
     ViewMulti: TMenuItem;
@@ -119,10 +133,15 @@ type
     procedure EditCutClick(Sender: TObject);
     procedure EditPasteClick(Sender: TObject);
     procedure ExitItemClick(Sender: TObject);
+    procedure FileCloseClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormNewClick(Sender: TObject);
     procedure HelpAboutClick(Sender: TObject);
+    procedure MenuItem28Click(Sender: TObject);
     procedure NewItemClick(Sender: TObject);
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
@@ -130,6 +149,7 @@ type
     procedure ViewSynClick(Sender: TObject);
     procedure ViewTextClick(Sender: TObject);
   private
+    Closed: Boolean;
     FFileName: string;
     procedure SetFileName(Value: string);
   public
@@ -147,7 +167,7 @@ var
 
 implementation
 
-uses About, FormEx, Patch, Streaming2;
+uses About, FormEx, MasterFm, Patch, Streaming2;
 
 {$R *.lfm}
 
@@ -184,9 +204,8 @@ end;
 procedure THighlighterSwitch.SetSaveDialog(AValue: TSaveDialog);
 begin
   if FSaveDialog = AValue then Exit;
-  if Assigned(FSaveDialog) then RemoveFreeNotification(FSaveDialog);
   FSaveDialog := AValue;
-  if Assigned(AValue) then FreeNotification(AValue)
+  if Assigned(AValue) then AValue.FreeNotification(Self)
 end;
 
 function THighlighterSwitch.GetItemCount: Integer;
@@ -197,9 +216,19 @@ end;
 procedure THighlighterSwitch.SetSynEdit(AValue: TSynEdit);
 begin
   if FSynEdit = AValue then Exit;
-  if Assigned(FSynEdit) then RemoveFreeNotification(FSynEdit);
   FSynEdit := AValue;
-  if Assigned(AValue) then FreeNotification(AValue);
+  if Assigned(AValue) then AValue.FreeNotification(Self);
+end;
+
+procedure THighlighterSwitch.Notification(AComponent: TComponent;
+  Operation: TOperation);
+begin
+  inherited Notification(AComponent, Operation);
+  if Assigned(AComponent) then
+    case Operation of
+      opRemove: if AComponent = FSynEdit then FSynEdit := nil
+          else if AComponent = FSaveDialog then FSaveDialog := nil;
+    end;
 end;
 
 procedure THighlighterSwitch.DefineProperties(Filer: TFiler);
@@ -268,7 +297,6 @@ end;
 procedure THighlighterData.SetHighlighter(AValue: TSynCustomHighLighter);
 begin
   if FHighlighter = AValue then Exit;
-  if Assigned(FHighlighter) then RemoveFreeNotification(FHighlighter);
   FHighlighter := AValue;
   if Assigned(AValue) then FreeNotification(AValue)
 end;
@@ -276,9 +304,20 @@ end;
 procedure THighlighterData.SetMenuItem(AValue: TMenuItem);
 begin
   if FMenuItem = AValue then Exit;
-  if Assigned(FMenuItem) then RemoveFreeNotification(FMenuItem);
   FMenuItem := AValue;
   if Assigned(AValue) then FreeNotification(AValue)
+end;
+
+procedure THighlighterData.Notification(AComponent: TComponent;
+  Operation: TOperation);
+begin
+  inherited Notification(AComponent, Operation);
+  if AComponent <> nil then
+    case Operation of
+      opRemove:
+        if AComponent = FHighlighter then FHighLighter := nil
+        else if AComponent = FMenuItem then FMenuItem := nil;
+    end;
 end;
 
 { TForm1 }
@@ -299,11 +338,21 @@ begin
     AddItem(ViewText, nil);
     Switch(ViewPas)
   end;
+  MasterForm.AddSlave(Sender as TForm1);
+  ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount]);
+  MasterForm.SendToBack;
+  MasterForm.Hide
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-  WriteBinaryToFile(GetConfigFileName, Self)
+  MasterForm.RemoveSlave(Sender as TForm1);
+  ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount])
+end;
+
+procedure TForm1.FormNewClick(Sender: TObject);
+begin
+  TForm1.Create(Application)
 end;
 
 procedure TForm1.HelpAboutClick(Sender: TObject);
@@ -311,9 +360,29 @@ begin
   AboutBox.ShowModal
 end;
 
+procedure TForm1.MenuItem28Click(Sender: TObject);
+begin
+
+end;
+
 procedure TForm1.ExitItemClick(Sender: TObject);
 begin
+  MasterForm.Close
+end;
+
+procedure TForm1.FileCloseClick(Sender: TObject);
+begin
   Close
+end;
+
+procedure TForm1.FormActivate(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  CloseAction := caFree
 end;
 
 procedure TForm1.EditCopyClick(Sender: TObject);

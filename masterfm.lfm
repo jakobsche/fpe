@@ -1,0 +1,8 @@
+object MasterForm: TMasterForm
+  Left = 402
+  Height = 240
+  Top = 134
+  Width = 320
+  Caption = 'MasterForm'
+  LCLVersion = '2.0.6.0'
+end

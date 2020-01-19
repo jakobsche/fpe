@@ -23,6 +23,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
+      <BuildNr Value="4"/>
       <Language Value="0407"/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -36,24 +37,21 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="5">
+    <RequiredPackages Count="4">
       <Item1>
-        <PackageName Value="dataobjpas"/>
+        <PackageName Value="rtlpatch"/>
       </Item1>
       <Item2>
-        <PackageName Value="rtlpatch"/>
+        <PackageName Value="LCLPatch"/>
       </Item2>
       <Item3>
-        <PackageName Value="LCLPatch"/>
+        <PackageName Value="SynEdit"/>
       </Item3>
       <Item4>
-        <PackageName Value="SynEdit"/>
-      </Item4>
-      <Item5>
         <PackageName Value="LCL"/>
-      </Item5>
+      </Item4>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="fpe.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -74,6 +72,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="About"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="masterfm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MasterForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="MasterFm"/>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -94,7 +100,7 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="3">
+    <Exceptions Count="4">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -104,6 +110,9 @@
       <Item3>
         <Name Value="EFOpenError"/>
       </Item3>
+      <Item4>
+        <Name Value="EReadError"/>
+      </Item4>
     </Exceptions>
   </Debugging>
 </CONFIG>
