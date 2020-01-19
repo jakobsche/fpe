@@ -3,6 +3,7 @@ object Form1: TForm1
   Height = 429
   Top = 201
   Width = 549
+  AllowDropFiles = True
   Caption = 'Free Pascal Editor'
   ClientHeight = 403
   ClientWidth = 549
@@ -12,6 +13,9 @@ object Form1: TForm1
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnDragDrop = FormDragDrop
+  OnDragOver = FormDragOver
+  OnDropFiles = FormDropFiles
   Position = poDefault
   LCLVersion = '2.1.0.0'
   inline SynEdit: TSynEdit

@@ -139,6 +139,10 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormDragDrop(Sender, Source: TObject; X, Y: Integer);
+    procedure FormDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
     procedure FormNewClick(Sender: TObject);
     procedure HelpAboutClick(Sender: TObject);
     procedure MenuItem28Click(Sender: TObject);
@@ -339,7 +343,7 @@ begin
     Switch(ViewPas)
   end;
   MasterForm.AddSlave(Sender as TForm1);
-  ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount]);
+  {ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount]);}
   MasterForm.SendToBack;
   MasterForm.Hide
 end;
@@ -347,7 +351,28 @@ end;
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
   MasterForm.RemoveSlave(Sender as TForm1);
-  ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount])
+  {ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount])}
+end;
+
+procedure TForm1.FormDragDrop(Sender, Source: TObject; X, Y: Integer);
+begin
+
+end;
+
+procedure TForm1.FormDragOver(Sender, Source: TObject; X, Y: Integer;
+  State: TDragState; var Accept: Boolean);
+begin
+
+end;
+
+procedure TForm1.FormDropFiles(Sender: TObject; const FileNames: array of String
+  );
+var
+  i: Integer;
+begin
+  if Save then SynEdit.Lines.LoadFromFile(Filenames[Low(Filenames)]);
+  for i := Low(FileNames) + 1 to High(FileNames) do
+    TForm1.Create(Application).SynEdit.Lines.LoadFromFile(FileNames[i]);
 end;
 
 procedure TForm1.FormNewClick(Sender: TObject);
