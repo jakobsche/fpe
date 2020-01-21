@@ -12,10 +12,6 @@ type
   { TMasterForm }
 
   TMasterForm = class(TForm)
-    procedure FormActivate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
-    procedure FormCreate(Sender: TObject);
   private
     FSlaveList: TFpList;
     function GetSlaveList: TFpList;
@@ -29,6 +25,7 @@ type
   protected
     procedure Activate; override;
   public
+    constructor Create(AnOwner: TComponent); override;
     destructor Destroy; override;
     function AddSlave(ASlave: TForm): Integer;
     function CloseQuery: Boolean; override;
@@ -46,26 +43,6 @@ implementation
 {$R *.lfm}
 
 { TMasterForm }
-
-procedure TMasterForm.FormActivate(Sender: TObject);
-begin
-
-end;
-
-procedure TMasterForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
-
-end;
-
-procedure TMasterForm.FormCloseQuery(Sender: TObject; var CanClose: boolean);
-begin
-
-end;
-
-procedure TMasterForm.FormCreate(Sender: TObject);
-begin
-
-end;
 
 function TMasterForm.GetSlaveList: TFpList;
 begin
@@ -101,6 +78,12 @@ procedure TMasterForm.Activate;
 begin
   Hide;
   inherited Activate;
+end;
+
+constructor TMasterForm.Create(AnOwner: TComponent);
+begin
+  inherited Create(AnOwner);
+  WindowState := wsMinimized
 end;
 
 destructor TMasterForm.Destroy;

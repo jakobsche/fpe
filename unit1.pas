@@ -153,7 +153,6 @@ type
     procedure ViewSynClick(Sender: TObject);
     procedure ViewTextClick(Sender: TObject);
   private
-    Closed: Boolean;
     FFileName: string;
     procedure SetFileName(Value: string);
   public
