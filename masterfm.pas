@@ -5,7 +5,7 @@ unit MasterFm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LazHelpHTML;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs;
 
 type
   

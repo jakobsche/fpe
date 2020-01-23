@@ -170,7 +170,7 @@ var
 
 implementation
 
-uses About, FormEx, MasterFm, Patch, Streaming2;
+uses About, FormEx, MasterFm, Patch;
 
 {$R *.lfm}
 
@@ -342,7 +342,10 @@ begin
     Switch(ViewPas)
   end;
   with HTMLHelpDataBase do begin
-    {$ifndef Unix} BaseURL := ExtractFilePath(Application.ExeName) + 'help' {$endif}
+    {$ifdef Darwin} BaseURL := 'file://' + ExtractFilePath(Application.ExeName) + 'help'
+    {$else}
+      {$ifndef Unix} BaseURL := ExtractFilePath(Application.ExeName) + 'help' {$endif}
+    {$endif}
   end;
   MasterForm.AddSlave(Sender as TForm1);
   {ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount]);}

@@ -39,14 +39,14 @@ object AboutBox: TAboutBox
     Top = 80
     Width = 328
     Caption = 'Initiator, Urheber'
-    ClientHeight = 70
-    ClientWidth = 324
+    ClientHeight = 69
+    ClientWidth = 318
     TabOrder = 1
     object Label3: TLabel
       Left = 8
       Height = 16
       Top = 8
-      Width = 311
+      Width = 305
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
       Caption = 'Copyright 2020 Andreas Jakobsche'
@@ -83,9 +83,9 @@ object AboutBox: TAboutBox
   end
   object Label2: TLabel
     Left = 8
-    Height = 13
+    Height = 16
     Top = 48
-    Width = 54
+    Width = 66
     Caption = 'Version 1.0'
     ParentColor = False
   end

@@ -5,8 +5,7 @@ unit About;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons, StdCtrls,
-  LazHelpHTML;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons, StdCtrls;
 
 type
 

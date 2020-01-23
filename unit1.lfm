@@ -5,7 +5,7 @@ object Form1: TForm1
   Width = 549
   AllowDropFiles = True
   Caption = 'Free Pascal Editor'
-  ClientHeight = 403
+  ClientHeight = 429
   ClientWidth = 549
   Menu = MainMenu1
   OnClose = FormClose
@@ -14,10 +14,10 @@ object Form1: TForm1
   OnDestroy = FormDestroy
   OnDropFiles = FormDropFiles
   Position = poDefault
-  LCLVersion = '2.1.0.0'
+  LCLVersion = '2.0.6.0'
   inline SynEdit: TSynEdit
     Left = 0
-    Height = 403
+    Height = 429
     Top = 0
     Width = 549
     Align = alClient
@@ -718,7 +718,6 @@ object Form1: TForm1
     DirectiveAttri.Style = [fsBold]
     CompilerMode = pcmObjFPC
     NestedComments = True
-    TypeHelpers = False
     D4syntax = False
     left = 24
     top = 232
