@@ -8,13 +8,10 @@ object Form1: TForm1
   ClientHeight = 429
   ClientWidth = 549
   Menu = MainMenu1
-  OnActivate = FormActivate
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  OnDragDrop = FormDragDrop
-  OnDragOver = FormDragOver
   OnDropFiles = FormDropFiles
   Position = poDefault
   LCLVersion = '2.0.6.0'
@@ -518,7 +515,7 @@ object Form1: TForm1
   object MainMenu1: TMainMenu
     left = 112
     top = 24
-    object MenuItem2: TMenuItem
+    object FileMenu: TMenuItem
       Caption = 'Datei'
       object NewItem: TMenuItem
         Caption = '&Neu'
@@ -540,10 +537,12 @@ object Form1: TForm1
         Caption = '-'
       end
       object MenuItem8: TMenuItem
-        Caption = 'Drucken'
+        Caption = '&Drucken'
+        OnClick = MenuItem8Click
       end
       object MenuItem9: TMenuItem
-        Caption = 'Drucker einrichten ...'
+        Caption = 'Drucker &einrichten ...'
+        OnClick = MenuItem9Click
       end
       object MenuItem10: TMenuItem
         Caption = '-'
@@ -560,7 +559,7 @@ object Form1: TForm1
         OnClick = ExitItemClick
       end
     end
-    object MenuItem5: TMenuItem
+    object EditMenu: TMenuItem
       Caption = 'B&earbeiten'
       object MenuItem6: TMenuItem
         Caption = 'Rückgängig'
@@ -608,7 +607,7 @@ object Form1: TForm1
         Caption = '&Gehe zu ...'
       end
     end
-    object MenuItem24: TMenuItem
+    object ViewMenu: TMenuItem
       Caption = '&Ansicht'
       object ViewMulti: TMenuItem
         Caption = '&Automatisch'
@@ -646,7 +645,7 @@ object Form1: TForm1
         OnClick = ViewSynClick
       end
     end
-    object MenuItem26: TMenuItem
+    object FormsMenu: TMenuItem
       Caption = 'Fenster'
       object FormNew: TMenuItem
         Caption = '&Neues Fenster'
@@ -654,7 +653,6 @@ object Form1: TForm1
       end
       object MenuItem28: TMenuItem
         Caption = 'Kachel'
-        OnClick = MenuItem28Click
       end
       object MenuItem29: TMenuItem
         Caption = 'Hintereinander'
@@ -672,7 +670,7 @@ object Form1: TForm1
         Caption = 'Anzeigen'
       end
     end
-    object MenuItem1: TMenuItem
+    object HelpMenu: TMenuItem
       Caption = '&Hilfe'
       object MenuItem3: TMenuItem
         Caption = 'Hilfeinhalte'
@@ -755,5 +753,26 @@ object Form1: TForm1
     Enabled = False
     left = 456
     top = 232
+  end
+  object PrinterSetupDialog: TPrinterSetupDialog
+    left = 335
+    top = 24
+  end
+  object PrintDialog: TPrintDialog
+    left = 453
+    top = 30
+  end
+  object HTMLHelpDatabase: THTMLHelpDatabase
+    BaseURL = 'file//help'
+    AutoRegister = True
+    KeywordPrefix = 'HTML/'
+    left = 216
+    top = 112
+  end
+  object HTMLBrowserHelpViewer: THTMLBrowserHelpViewer
+    BrowserParams = '%s'
+    AutoRegister = True
+    left = 360
+    top = 112
   end
 end

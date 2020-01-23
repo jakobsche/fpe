@@ -5,7 +5,7 @@ unit MasterFm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LazHelpHTML;
 
 type
   
@@ -76,8 +76,12 @@ end;
 
 procedure TMasterForm.Activate;
 begin
-  Hide;
   inherited Activate;
+  if SlaveCount > 0 then begin
+    SlaveForms[0].Show;
+    SlaveForms[0].BringToFront;
+  end;
+  Hide;
 end;
 
 constructor TMasterForm.Create(AnOwner: TComponent);

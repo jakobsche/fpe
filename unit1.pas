@@ -5,10 +5,10 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, SynEdit,
-  SynHighlighterPas, SynHighlighterJScript, SynHighlighterXML,
-  SynEditHighlighterFoldBase, SynHighlighterHTML, SynHighlighterMulti,
-  SynEditHighlighter, SynHighlighterCpp;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, LazHelpHTML,
+  SynEdit, SynHighlighterPas, SynHighlighterJScript, SynHighlighterXML,
+  SynHighlighterHTML, SynHighlighterMulti, SynEditHighlighter,
+  SynHighlighterCpp, PrintersDlgs;
 
 type
 
@@ -70,8 +70,10 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
+    HTMLBrowserHelpViewer: THTMLBrowserHelpViewer;
+    HTMLHelpDatabase: THTMLHelpDatabase;
     MainMenu1: TMainMenu;
-    MenuItem1: TMenuItem;
+    HelpMenu: TMenuItem;
     MenuItem10: TMenuItem;
     ExitItem: TMenuItem;
     MenuItem11: TMenuItem;
@@ -86,15 +88,17 @@ type
     MenuItem17: TMenuItem;
     MenuItem18: TMenuItem;
     MenuItem19: TMenuItem;
-    MenuItem2: TMenuItem;
+    FileMenu: TMenuItem;
     MenuItem20: TMenuItem;
     MenuItem21: TMenuItem;
     MenuItem22: TMenuItem;
     MenuItem23: TMenuItem;
     HelpAbout: TMenuItem;
-    MenuItem24: TMenuItem;
+    PrintDialog: TPrintDialog;
+    PrinterSetupDialog: TPrinterSetupDialog;
+    ViewMenu: TMenuItem;
     FileClose: TMenuItem;
-    MenuItem26: TMenuItem;
+    FormsMenu: TMenuItem;
     FormNew: TMenuItem;
     MenuItem28: TMenuItem;
     MenuItem29: TMenuItem;
@@ -116,7 +120,7 @@ type
     SynJScriptSyn: TSynJScriptSyn;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
-    MenuItem5: TMenuItem;
+    EditMenu: TMenuItem;
     MenuItem6: TMenuItem;
     NewItem: TMenuItem;
     OpenItem: TMenuItem;
@@ -134,24 +138,20 @@ type
     procedure EditPasteClick(Sender: TObject);
     procedure ExitItemClick(Sender: TObject);
     procedure FileCloseClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure FormDragDrop(Sender, Source: TObject; X, Y: Integer);
-    procedure FormDragOver(Sender, Source: TObject; X, Y: Integer;
-      State: TDragState; var Accept: Boolean);
     procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
     procedure FormNewClick(Sender: TObject);
     procedure HelpAboutClick(Sender: TObject);
-    procedure MenuItem28Click(Sender: TObject);
+    procedure MenuItem8Click(Sender: TObject);
+    procedure MenuItem9Click(Sender: TObject);
     procedure NewItemClick(Sender: TObject);
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
     procedure SaveItemClick(Sender: TObject);
     procedure ViewSynClick(Sender: TObject);
-    procedure ViewTextClick(Sender: TObject);
   private
     FFileName: string;
     procedure SetFileName(Value: string);
@@ -353,17 +353,6 @@ begin
   {ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount])}
 end;
 
-procedure TForm1.FormDragDrop(Sender, Source: TObject; X, Y: Integer);
-begin
-
-end;
-
-procedure TForm1.FormDragOver(Sender, Source: TObject; X, Y: Integer;
-  State: TDragState; var Accept: Boolean);
-begin
-
-end;
-
 procedure TForm1.FormDropFiles(Sender: TObject; const FileNames: array of String
   );
 var
@@ -384,9 +373,14 @@ begin
   AboutBox.ShowModal
 end;
 
-procedure TForm1.MenuItem28Click(Sender: TObject);
+procedure TForm1.MenuItem8Click(Sender: TObject);
 begin
+  PrintDialog.Execute
+end;
 
+procedure TForm1.MenuItem9Click(Sender: TObject);
+begin
+  PrinterSetupDialog.Execute
 end;
 
 procedure TForm1.ExitItemClick(Sender: TObject);
@@ -397,11 +391,6 @@ end;
 procedure TForm1.FileCloseClick(Sender: TObject);
 begin
   Close
-end;
-
-procedure TForm1.FormActivate(Sender: TObject);
-begin
-
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -510,11 +499,6 @@ end;
 procedure TForm1.ViewSynClick(Sender: TObject);
 begin
   HLSwitch.Switch(Sender as TMenuItem)
-end;
-
-procedure TForm1.ViewTextClick(Sender: TObject);
-begin
-
 end;
 
 procedure TForm1.SetFileName(Value: string);
