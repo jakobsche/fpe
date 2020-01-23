@@ -341,6 +341,9 @@ begin
     AddItem(ViewText, nil);
     Switch(ViewPas)
   end;
+  with HTMLHelpDataBase do begin
+    {$ifndef Unix} BaseURL := ExtractFilePath(Application.ExeName) + 'help' {$endif}
+  end;
   MasterForm.AddSlave(Sender as TForm1);
   {ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount]);}
   MasterForm.SendToBack;

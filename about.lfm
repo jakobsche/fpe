@@ -1,7 +1,7 @@
 object AboutBox: TAboutBox
-  Left = 748
+  Left = 768
   Height = 264
-  Top = 217
+  Top = 172
   Width = 343
   BorderStyle = bsDialog
   Caption = 'Über Free Pascal Editor'
@@ -39,14 +39,14 @@ object AboutBox: TAboutBox
     Top = 80
     Width = 328
     Caption = 'Initiator, Urheber'
-    ClientHeight = 69
-    ClientWidth = 318
+    ClientHeight = 70
+    ClientWidth = 324
     TabOrder = 1
     object Label3: TLabel
       Left = 8
       Height = 16
       Top = 8
-      Width = 305
+      Width = 311
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
       Caption = 'Copyright 2020 Andreas Jakobsche'
@@ -83,9 +83,9 @@ object AboutBox: TAboutBox
   end
   object Label2: TLabel
     Left = 8
-    Height = 16
+    Height = 13
     Top = 48
-    Width = 66
+    Width = 54
     Caption = 'Version 1.0'
     ParentColor = False
   end
