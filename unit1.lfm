@@ -536,13 +536,13 @@ object Form1: TForm1
       object MenuItem7: TMenuItem
         Caption = '-'
       end
-      object MenuItem8: TMenuItem
+      object FilePrint: TMenuItem
         Caption = '&Drucken'
-        OnClick = MenuItem8Click
+        OnClick = FilePrintClick
       end
-      object MenuItem9: TMenuItem
+      object FilePrinterSetup: TMenuItem
         Caption = 'Drucker &einrichten ...'
-        OnClick = MenuItem9Click
+        OnClick = FilePrinterSetupClick
       end
       object MenuItem10: TMenuItem
         Caption = '-'

@@ -127,8 +127,8 @@ type
     SaveItem: TMenuItem;
     SaveAsItem: TMenuItem;
     MenuItem7: TMenuItem;
-    MenuItem8: TMenuItem;
-    MenuItem9: TMenuItem;
+    FilePrint: TMenuItem;
+    FilePrinterSetup: TMenuItem;
     OpenDialog: TOpenDialog;
     SaveDialog: TSaveDialog;
     SynEdit: TSynEdit;
@@ -145,8 +145,8 @@ type
     procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
     procedure FormNewClick(Sender: TObject);
     procedure HelpAboutClick(Sender: TObject);
-    procedure MenuItem8Click(Sender: TObject);
-    procedure MenuItem9Click(Sender: TObject);
+    procedure FilePrintClick(Sender: TObject);
+    procedure FilePrinterSetupClick(Sender: TObject);
     procedure NewItemClick(Sender: TObject);
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
@@ -342,9 +342,12 @@ begin
     Switch(ViewPas)
   end;
   with HTMLHelpDataBase do begin
-    {$ifdef Darwin} BaseURL := 'file://' + ExtractFilePath(Application.ExeName) + 'help'
+    {$ifdef Darwin}
+      BaseURL := 'file://' + ExtractFilePath(Application.ExeName) + 'help'
     {$else}
-      {$ifndef Unix} BaseURL := ExtractFilePath(Application.ExeName) + 'help' {$endif}
+      {$ifndef Unix}
+        BaseURL := ExtractFilePath(Application.ExeName) + 'help'
+      {$endif}
     {$endif}
   end;
   MasterForm.AddSlave(Sender as TForm1);
@@ -379,12 +382,12 @@ begin
   AboutBox.ShowModal
 end;
 
-procedure TForm1.MenuItem8Click(Sender: TObject);
+procedure TForm1.FilePrintClick(Sender: TObject);
 begin
   PrintDialog.Execute
 end;
 
-procedure TForm1.MenuItem9Click(Sender: TObject);
+procedure TForm1.FilePrinterSetupClick(Sender: TObject);
 begin
   PrinterSetupDialog.Execute
 end;

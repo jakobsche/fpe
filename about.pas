@@ -16,6 +16,9 @@ type
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
+    FacebookBtn: TBitBtn;
+    MediumBtn: TBitBtn;
+    PatreonBtn: TBitBtn;
     ContributorsBtn: TBitBtn;
     GroupBox1: TGroupBox;
     Label1: TLabel;
@@ -25,7 +28,10 @@ type
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
     procedure ContributorsBtnClick(Sender: TObject);
+    procedure FacebookBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure MediumBtnClick(Sender: TObject);
+    procedure PatreonBtnClick(Sender: TObject);
   private
 
   public
@@ -48,6 +54,16 @@ begin
   FormAdjust(Self)
 end;
 
+procedure TAboutBox.MediumBtnClick(Sender: TObject);
+begin
+  OpenDocument('https://medium.com/@jakobsche')
+end;
+
+procedure TAboutBox.PatreonBtnClick(Sender: TObject);
+begin
+  OpenDocument('https://patreon.com/raspberrypirad')
+end;
+
 procedure TAboutBox.BitBtn2Click(Sender: TObject);
 begin
   OpenDocument('mailto:messages@jakobsche.de');
@@ -66,6 +82,11 @@ end;
 procedure TAboutBox.ContributorsBtnClick(Sender: TObject);
 begin
   ContributorsBtn.ShowHelp
+end;
+
+procedure TAboutBox.FacebookBtnClick(Sender: TObject);
+begin
+  OpenDocument('https://facebook.com/raspberrypirad')
 end;
 
 end.

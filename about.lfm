@@ -1,19 +1,19 @@
 object AboutBox: TAboutBox
-  Left = 768
-  Height = 264
-  Top = 172
-  Width = 343
+  Left = 695
+  Height = 322
+  Top = 228
+  Width = 349
   BorderStyle = bsDialog
   Caption = 'Über Free Pascal Editor'
-  ClientHeight = 264
-  ClientWidth = 343
+  ClientHeight = 322
+  ClientWidth = 349
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.0.6.0'
   object BitBtn1: TBitBtn
     Left = 128
     Height = 30
-    Top = 225
+    Top = 283
     Width = 75
     Anchors = [akLeft, akBottom]
     Default = True
@@ -26,7 +26,7 @@ object AboutBox: TAboutBox
     Left = 8
     Height = 32
     Top = 8
-    Width = 325
+    Width = 331
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Editor, der für Quelltexte in verschiedenen '#10'Programmiersprachen optimiert ist wird.'
@@ -35,18 +35,19 @@ object AboutBox: TAboutBox
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Height = 88
+    Height = 112
     Top = 80
-    Width = 328
+    Width = 331
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Initiator, Urheber'
-    ClientHeight = 69
-    ClientWidth = 318
+    ClientHeight = 93
+    ClientWidth = 321
     TabOrder = 1
     object Label3: TLabel
       Left = 8
       Height = 16
       Top = 8
-      Width = 305
+      Width = 308
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
       Caption = 'Copyright 2020 Andreas Jakobsche'
@@ -80,6 +81,33 @@ object AboutBox: TAboutBox
       OnClick = BitBtn4Click
       TabOrder = 2
     end
+    object PatreonBtn: TBitBtn
+      Left = 248
+      Height = 30
+      Top = 32
+      Width = 75
+      Caption = '&Patreon'
+      OnClick = PatreonBtnClick
+      TabOrder = 3
+    end
+    object MediumBtn: TBitBtn
+      Left = 7
+      Height = 30
+      Top = 64
+      Width = 75
+      Caption = '&Medium'
+      OnClick = MediumBtnClick
+      TabOrder = 4
+    end
+    object FacebookBtn: TBitBtn
+      Left = 88
+      Height = 30
+      Top = 64
+      Width = 88
+      Caption = '&Facebook'
+      OnClick = FacebookBtnClick
+      TabOrder = 5
+    end
   end
   object Label2: TLabel
     Left = 8
@@ -92,7 +120,7 @@ object AboutBox: TAboutBox
   object ContributorsBtn: TBitBtn
     Left = 16
     Height = 30
-    Top = 184
+    Top = 208
     Width = 104
     HelpType = htKeyword
     HelpKeyword = 'HTML/contributors.html'
