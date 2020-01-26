@@ -28,6 +28,7 @@
 {"hash":191404380,"name":"tform1.viewpas.caption","sourcebytes":[38,80,97,115,99,97,108],"value":"&Pascal"},
 {"hash":2862324,"name":"tform1.viewtext.caption","sourcebytes":[38,84,101,120,116],"value":"&Text"},
 {"hash":179484,"name":"tform1.viewxml.caption","sourcebytes":[38,88,77,76],"value":"&XML"},
+{"hash":225431694,"name":"tform1.menuitem1.caption","sourcebytes":[38,83,99,104,114,105,102,116,32,46,46,46],"value":"&Schrift ..."},
 {"hash":214280834,"name":"tform1.formsmenu.caption","sourcebytes":[70,101,110,115,116,101,114],"value":"Fenster"},
 {"hash":143551794,"name":"tform1.formnew.caption","sourcebytes":[38,78,101,117,101,115,32,70,101,110,115,116,101,114],"value":"&Neues Fenster"},
 {"hash":85434044,"name":"tform1.menuitem28.caption","sourcebytes":[75,97,99,104,101,108],"value":"Kachel"},

@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, LazHelpHTML,
   SynEdit, SynHighlighterPas, SynHighlighterJScript, SynHighlighterXML,
   SynHighlighterHTML, SynHighlighterMulti, SynEditHighlighter,
-  SynHighlighterCpp, PrintersDlgs;
+  SynHighlighterCpp, SynCompletion, PrintersDlgs;
 
 type
 
@@ -70,10 +70,13 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
+    FontDialog: TFontDialog;
     HTMLBrowserHelpViewer: THTMLBrowserHelpViewer;
     HTMLHelpDatabase: THTMLHelpDatabase;
-    MainMenu1: TMainMenu;
+    MainMenu: TMainMenu;
     HelpMenu: TMenuItem;
+    MenuItem1: TMenuItem;
+    N1: TMenuItem;
     MenuItem10: TMenuItem;
     ExitItem: TMenuItem;
     MenuItem11: TMenuItem;
@@ -96,6 +99,7 @@ type
     HelpAbout: TMenuItem;
     PrintDialog: TPrintDialog;
     PrinterSetupDialog: TPrinterSetupDialog;
+    SynAutoComplete: TSynAutoComplete;
     ViewMenu: TMenuItem;
     FileClose: TMenuItem;
     FormsMenu: TMenuItem;
@@ -147,6 +151,7 @@ type
     procedure HelpAboutClick(Sender: TObject);
     procedure FilePrintClick(Sender: TObject);
     procedure FilePrinterSetupClick(Sender: TObject);
+    procedure MenuItem1Click(Sender: TObject);
     procedure NewItemClick(Sender: TObject);
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
@@ -390,6 +395,11 @@ end;
 procedure TForm1.FilePrinterSetupClick(Sender: TObject);
 begin
   PrinterSetupDialog.Execute
+end;
+
+procedure TForm1.MenuItem1Click(Sender: TObject);
+begin
+  if FontDialog.Execute then SynEdit.Font := FontDialog.Font;
 end;
 
 procedure TForm1.ExitItemClick(Sender: TObject);
