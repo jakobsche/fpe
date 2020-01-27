@@ -5,13 +5,14 @@ unit MasterFm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, SynHighlighterPas;
 
 type
   
   { TMasterForm }
 
   TMasterForm = class(TForm)
+    procedure FormCreate(Sender: TObject);
   private
     FSlaveList: TFpList;
     function GetSlaveList: TFpList;
@@ -40,9 +41,16 @@ var
 
 implementation
 
+uses Unit1;
+
 {$R *.lfm}
 
 { TMasterForm }
+
+procedure TMasterForm.FormCreate(Sender: TObject);
+begin
+
+end;
 
 function TMasterForm.GetSlaveList: TFpList;
 begin

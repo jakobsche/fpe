@@ -25,6 +25,7 @@
 {"hash":173531,"name":"tform1.viewcpp.caption","sourcebytes":[38,67,43,43],"value":"&C++"},
 {"hash":2808092,"name":"tform1.viewhtml.caption","sourcebytes":[38,72,84,77,76],"value":"&HTML"},
 {"hash":112302260,"name":"tform1.viewjs.caption","sourcebytes":[38,74,97,118,97,83,99,114,105,112,116],"value":"&JavaScript"},
+{"hash":239318117,"name":"tform1.viewlfm.caption","sourcebytes":[38,76,97,122,97,114,117,115,45,70,111,114,109,117,108,97,114,114,101,115,115,111,117,114,99,101],"value":"&Lazarus-Formularressource"},
 {"hash":191404380,"name":"tform1.viewpas.caption","sourcebytes":[38,80,97,115,99,97,108],"value":"&Pascal"},
 {"hash":2862324,"name":"tform1.viewtext.caption","sourcebytes":[38,84,101,120,116],"value":"&Text"},
 {"hash":179484,"name":"tform1.viewxml.caption","sourcebytes":[38,88,77,76],"value":"&XML"},

@@ -8,7 +8,8 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, LazHelpHTML,
   SynEdit, SynHighlighterPas, SynHighlighterJScript, SynHighlighterXML,
   SynHighlighterHTML, SynHighlighterMulti, SynEditHighlighter,
-  SynHighlighterCpp, SynCompletion, PrintersDlgs;
+  SynHighlighterCpp, SynCompletion, SynHighlighterLFM, SynHighlighterAny,
+  PrintersDlgs;
 
 type
 
@@ -76,6 +77,9 @@ type
     MainMenu: TMainMenu;
     HelpMenu: TMenuItem;
     MenuItem1: TMenuItem;
+    SynAnySyn1: TSynAnySyn;
+    SynLFmSyn: TSynLFMSyn;
+    ViewLFm: TMenuItem;
     N1: TMenuItem;
     MenuItem10: TMenuItem;
     ExitItem: TMenuItem;
@@ -163,6 +167,7 @@ type
   public
     HLSwitch: THighlighterSwitch;
     function GetConfigFileName: string;
+    procedure OpenFile(AFileName: string);
     function Save: Boolean;
     function SaveAs: Boolean;
     function GuessHighlighter: TSynCustomHighLighter;
@@ -331,6 +336,9 @@ end;
 { TForm1 }
 
 procedure TForm1.FormCreate(Sender: TObject);
+var
+  i, SlaveIndex: Integer;
+  F: TForm1;
 begin
   FormAdjust(Self);
   HLSwitch := THighlighterSwitch.Create(Self);
@@ -344,6 +352,7 @@ begin
     AddItem(ViewMulti, SynMultiSyn);
     AddItem(ViewCpp, SynCppSyn);
     AddItem(ViewText, nil);
+    AddItem(ViewLFm, SynLFmSyn);
     Switch(ViewPas)
   end;
   with HTMLHelpDataBase do begin
@@ -355,8 +364,21 @@ begin
       {$endif}
     {$endif}
   end;
-  MasterForm.AddSlave(Sender as TForm1);
-  {ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount]);}
+  SlaveIndex := MasterForm.AddSlave(Sender as TForm1);
+  if SlaveIndex = 0 then begin
+    if Application.ParamCount > 0 then
+      if FileExists(Application.Params[1]) then begin
+        SynEdit.Lines.LoadFromFile(Application.Params[1]);
+        FileName := Application.Params[1]
+      end;
+    for i := 2 to Application.ParamCount do
+      if FileExists(Application.Params[i]) then begin
+        F := TForm1.Create(Application);
+        F.SynEdit.Lines.LoadFromFile(Application.Params[i]);
+        F.FileName := Application.Params[i];
+        MasterForm.AddSlave(F)
+      end;
+  end;
   MasterForm.SendToBack;
   MasterForm.Hide
 end;
@@ -532,6 +554,11 @@ begin
   Result := BuildFileName(Application.EnvironmentVariable['HOME'], '.config/fpe');
   ForceDirectories(Result);
   Result := ChangeFileExt(BuildFileName(Result, Name), '.cfg');
+end;
+
+procedure TForm1.OpenFile(AFileName: string);
+begin
+  ShowMessage(AFileName)
 end;
 
 function TForm1.Save: Boolean;

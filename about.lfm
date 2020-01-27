@@ -1,7 +1,7 @@
 object AboutBox: TAboutBox
-  Left = 695
+  Left = 551
   Height = 322
-  Top = 228
+  Top = 288
   Width = 349
   BorderStyle = bsDialog
   Caption = 'Über Free Pascal Editor'
@@ -29,7 +29,7 @@ object AboutBox: TAboutBox
     Width = 331
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
-    Caption = 'Editor, der für Quelltexte in verschiedenen '#10'Programmiersprachen optimiert ist wird.'
+    Caption = 'Editor, der für Quelltexte in verschiedenen '#10'Programmiersprachen optimiert wird.'
     ParentColor = False
     WordWrap = True
   end
