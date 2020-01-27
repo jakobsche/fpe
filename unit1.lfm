@@ -457,6 +457,7 @@ object Form1: TForm1
     MouseActions = <>
     MouseTextActions = <>
     MouseSelActions = <>
+    Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoSmartTabs, eoTrimTrailingSpaces]
     VisibleSpecialChars = [vscSpace, vscTabAtLast]
     SelectedColor.BackPriority = 50
     SelectedColor.ForePriority = 50
@@ -786,14 +787,6 @@ object Form1: TForm1
     left = 360
     top = 112
   end
-  object SynAutoComplete: TSynAutoComplete
-    EndOfTokenChr = '()[].'
-    ShortCut = 8224
-    ExecCommandID = ecSynAutoCompletionExecute
-    Editor = SynEdit
-    left = 552
-    top = 232
-  end
   object FontDialog: TFontDialog
     MinFontSize = 0
     MaxFontSize = 0
@@ -806,16 +799,19 @@ object Form1: TForm1
     left = 24
     top = 288
   end
-  object SynAnySyn1: TSynAnySyn
-    Enabled = False
-    Comments = []
-    DetectPreprocessor = False
-    IdentifierChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'
-    Markup = False
-    Entity = False
-    DollarVariables = False
-    ActiveDot = False
-    left = 282
-    top = 324
+  object SynCompletion: TSynCompletion
+    Position = 0
+    LinesInWindow = 6
+    SelectedColor = clHighlight
+    CaseSensitive = False
+    Width = 262
+    AutoUseSingleIdent = True
+    ShortCut = 16416
+    EndOfTokenChr = '()[].'
+    ExecCommandID = ecSynCompletionExecute
+    Editor = SynEdit
+    ToggleReplaceWhole = False
+    left = 195
+    top = 296
   end
 end

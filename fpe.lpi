@@ -27,6 +27,17 @@
       <BuildNr Value="9"/>
       <Language Value="0407"/>
     </VersionInfo>
+    <MacroValues Count="9">
+      <Macro1 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro2 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro3 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro4 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro5 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro6 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro7 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro8 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro9 Name="LCLWidgetType" Value="cocoa"/>
+    </MacroValues>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
     </BuildModes>
@@ -107,20 +118,4 @@
       </Options>
     </Linking>
   </CompilerOptions>
-  <Debugging>
-    <Exceptions Count="4">
-      <Item1>
-        <Name Value="EAbort"/>
-      </Item1>
-      <Item2>
-        <Name Value="ECodetoolError"/>
-      </Item2>
-      <Item3>
-        <Name Value="EFOpenError"/>
-      </Item3>
-      <Item4>
-        <Name Value="EReadError"/>
-      </Item4>
-    </Exceptions>
-  </Debugging>
 </CONFIG>

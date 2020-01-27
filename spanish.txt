@@ -1,0 +1,61 @@
+Von t.me/joseyosoy
+
+Datei / Archivo
+   Neu / Nuevo
+   Offnen / Abrir
+   Speichern / Guardar
+   Speichern unter / Guardar en
+   Drucken / Imprimir
+   Drucker einrichten / Seleccionar impresora
+   Schlieben / Cerrar
+   Beenden / Finalizar
+Bearbeiten / Editar
+   Ruckgangig / Deshacer
+   Wiederhertellen / Rehacer
+   Aules auswahlen / Seleccionar
+   Ausshchneiden / 
+   Kopieren / Copiar
+   Einfugen / Descartar
+   Paste Special / Pegado especial
+   Suchen / Buscar
+   Ersetzen / Sustituir
+   Gehe zu... / Ir a  ...
+Ansicht / Considerar
+   Automatisch / Automáticamente
+   C++ /
+   HTML /
+   JavaScript /
+   Pascal /
+   Text /
+   XML /
+Fenster / Ventana
+   Neues Fenster / Nueva Ventana
+   Kachel / Mosaico
+   Hintereinander / En línea
+   Alle Anordnen / Ordenar todos
+   Verbergen / Ocultar
+   Anzeigen / Mostrar
+Hilfe / Ayuda
+   Hilfeinhalte / Sugerir ayuda
+   Hilfe-Index / Indice de la ayuda
+   Onlinehilfe / Ayuda en línea
+   Licencinformation / Información de licenciamiento
+   Nach Updates suchen / Buscar Actualizaciones
+   Uber / Acerca de
+   
+   
+   
+   Editor, der fur Quelltexte in verschiedenen Programmiersprachen optimiert ist wird.
+   Editor, que permite optimizar el código fuente en varios lenguajes de programación
+   
+   Version 1.0 / Versión 1.0
+   
+   initiator, Urheber  / Autor inicial del proyecto
+   Copyright 2020 Andreas Jakobsche /
+   E-Mail Telegram Github /
+   Mitwirkende / Colaborar
+   OK 
+   
+Die Datei wurde noch nicht gespeichert. Soll sie jetzt gespeichert werden?
+
+/ El archivo no se ha guardado todavía. Guardar ahora?

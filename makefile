@@ -7,21 +7,28 @@
 # requirements!
 
 DEPLOY: deploy/$(TARGET_CPU)-$(TARGET_OS).zip
+
+deploy/$(TARGET_CPU)-$(TARGET_OS).zip: deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe.po help/contributors.html deploy/$(TARGET_CPU)-$(TARGET_OS)/README.md deploy/$(TARGET_CPU)-$(TARGET_OS)/LICENSE
 	zip -ru deploy/$(TARGET_CPU)-$(TARGET_OS).zip deploy/$(TARGET_CPU)-$(TARGET_OS)
 
-deploy/$(TARGET_CPU)-$(TARGET_OS): deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app deploy/$(TARGET_CPU)-$(TARGET_OS)/README.md deploy/$(TARGET_CPU)-$(TARGET_OS)/LICENSE
+deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe: lib/$(TARGET_CPU)-$(TARGET_OS)/fpe lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app
+	cp -fpv lib/$(TARGET_CPU)-$(TARGET_OS)/fpe deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/
 
-deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app: lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app lib/$(TARGET_CPU)-$(TARGET_OS)/fpe lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.po
-	cp -u lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app
-	cp -u lib/$(TARGET_CPU)-$(TARGET_OS)/fpe deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe
-	cp -u lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.po deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe.po
+deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe.po: lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.po lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app
+	cp -fpv lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.po deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/ 
 
-deploy/$(TARGET_CPU)-$(TARGET_OS)/README.md: README.app
-	cp -u README.md deploy/$(TARGET_CPU)-$(TARGET_OS)/README.md
+deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/help/contributors.html: help/contributors.html lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app
+	cp -fpRv help deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/
+
+deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app: lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app
+	cp -fpRv lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app deploy/$(TARGET_CPU)-$(TARGET_OS)/
+
+deploy/$(TARGET_CPU)-$(TARGET_OS)/README.md: README.md
+	cp -fpv README.md deploy/$(TARGET_CPU)-$(TARGET_OS)/
 
 deploy/$(TARGET_CPU)-$(TARGET_OS)/LICENSE: LICENSE
-	cp -u LICENSE deploy/$(TARGET_CPU)-$(TARGET_OS)/LICENSE
+	cp -fpv LICENSE deploy/$(TARGET_CPU)-$(TARGET_OS)/
 
 lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app, lib/$(TARGET_CPU)-$(TARGET_OS)/fpe, lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.po: fpe.lpi help *.pas *.lfm *.lrj
-	lazbuild fpe.lpi
-	cp -u help lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/help
+	lazbuild --widgetset=cocoa --language=de fpe.lpi
+	cp -fpRv help lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/

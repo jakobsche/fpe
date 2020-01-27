@@ -77,7 +77,7 @@ type
     MainMenu: TMainMenu;
     HelpMenu: TMenuItem;
     MenuItem1: TMenuItem;
-    SynAnySyn1: TSynAnySyn;
+    SynCompletion: TSynCompletion;
     SynLFmSyn: TSynLFMSyn;
     ViewLFm: TMenuItem;
     N1: TMenuItem;
@@ -103,7 +103,6 @@ type
     HelpAbout: TMenuItem;
     PrintDialog: TPrintDialog;
     PrinterSetupDialog: TPrinterSetupDialog;
-    SynAutoComplete: TSynAutoComplete;
     ViewMenu: TMenuItem;
     FileClose: TMenuItem;
     FormsMenu: TMenuItem;
