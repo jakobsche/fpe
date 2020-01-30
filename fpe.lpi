@@ -27,7 +27,7 @@
       <BuildNr Value="11"/>
       <Language Value="0407"/>
     </VersionInfo>
-    <MacroValues Count="9">
+    <MacroValues Count="10">
       <Macro1 Name="LCLWidgetType" Value="cocoa"/>
       <Macro2 Name="LCLWidgetType" Value="cocoa"/>
       <Macro3 Name="LCLWidgetType" Value="cocoa"/>
@@ -37,6 +37,7 @@
       <Macro7 Name="LCLWidgetType" Value="cocoa"/>
       <Macro8 Name="LCLWidgetType" Value="cocoa"/>
       <Macro9 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro10 Name="LCLWidgetType" Value="cocoa"/>
     </MacroValues>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
