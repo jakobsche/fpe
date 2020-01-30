@@ -12,7 +12,7 @@ deploy/$(TARGET_CPU)-$(TARGET_OS).zip: deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app
 	zip -ru deploy/$(TARGET_CPU)-$(TARGET_OS).zip deploy/$(TARGET_CPU)-$(TARGET_OS)
 
 deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe: lib/$(TARGET_CPU)-$(TARGET_OS)/fpe lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app
-	cp -fpv lib/$(TARGET_CPU)-$(TARGET_OS)/fpe deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/
+	strip -o deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe lib/$(TARGET_CPU)-$(TARGET_OS)/fpe
 
 deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe.po: lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.po lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app
 	cp -fpv lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.po deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/ 

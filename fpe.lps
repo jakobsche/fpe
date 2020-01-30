@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default">
-      <SessionMatrixOptions Count="10">
+      <SessionMatrixOptions Count="12">
         <Item1 ID="612369546143" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
         <Item2 ID="879146123823" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
         <Item3 ID="391304443071" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
@@ -14,9 +14,11 @@
         <Item8 ID="540157877525" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
         <Item9 ID="772150245584" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
         <Item10 ID="775262025017" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item11 ID="867826483782" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item12 ID="150025277392" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
       </SessionMatrixOptions>
     </BuildModes>
-    <Units Count="9">
+    <Units Count="5">
       <Unit0>
         <Filename Value="fpe.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -74,165 +76,8 @@
         <CursorPos Y="2"/>
         <UsageCount Value="52"/>
       </Unit4>
-      <Unit5>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedit.pp"/>
-        <UnitName Value="SynEdit"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="1306"/>
-        <CursorPos X="15" Y="1335"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit5>
-      <Unit6>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedittypes.pp"/>
-        <UnitName Value="SynEditTypes"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="87"/>
-        <CursorPos X="10" Y="101"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit6>
-      <Unit7>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/syneditmiscclasses.pp"/>
-        <UnitName Value="SynEditMiscClasses"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="95"/>
-        <CursorPos X="22" Y="106"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit7>
-      <Unit8>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/syneditpointclasses.pas"/>
-        <UnitName Value="SynEditPointClasses"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="367"/>
-        <CursorPos X="20" Y="348"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit8>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
-      <Position1>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="590" Column="53" TopLine="583"/>
-      </Position1>
-      <Position2>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="591" Column="53" TopLine="584"/>
-      </Position2>
-      <Position3>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="590" Column="53" TopLine="583"/>
-      </Position3>
-      <Position4>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="591" Column="53" TopLine="584"/>
-      </Position4>
-      <Position5>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="590" Column="53" TopLine="583"/>
-      </Position5>
-      <Position6>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="66" Column="28" TopLine="45"/>
-      </Position6>
-      <Position7>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="547" Column="3" TopLine="543"/>
-      </Position7>
-      <Position8>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedittypes.pp"/>
-        <Caret Line="103" Column="3" TopLine="87"/>
-      </Position8>
-      <Position9>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="547" Column="33" TopLine="543"/>
-      </Position9>
-      <Position10>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="171" Column="18" TopLine="147"/>
-      </Position10>
-      <Position11>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="375" TopLine="353"/>
-      </Position11>
-      <Position12>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="549" Column="41" TopLine="544"/>
-      </Position12>
-      <Position13>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedit.pp"/>
-        <Caret Line="1258" TopLine="1238"/>
-      </Position13>
-      <Position14>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedit.pp"/>
-        <Caret Line="992" Column="48" TopLine="970"/>
-      </Position14>
-      <Position15>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="557" Column="41" TopLine="552"/>
-      </Position15>
-      <Position16>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="142" Column="18" TopLine="127"/>
-      </Position16>
-      <Position17>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedit.pp"/>
-        <Caret Line="1259" Column="3" TopLine="1238"/>
-      </Position17>
-      <Position18>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="145" Column="20" TopLine="127"/>
-      </Position18>
-      <Position19>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedit.pp"/>
-        <Caret Line="1248" Column="19" TopLine="1229"/>
-      </Position19>
-      <Position20>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedit.pp"/>
-        <Caret Line="371" Column="3" TopLine="354"/>
-      </Position20>
-      <Position21>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedittypes.pp"/>
-        <Caret Line="104" Column="3" TopLine="88"/>
-      </Position21>
-      <Position22>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedittypes.pp"/>
-        <Caret Line="101" Column="8" TopLine="88"/>
-      </Position22>
-      <Position23>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="560" Column="4" TopLine="538"/>
-      </Position23>
-      <Position24>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedit.pp"/>
-        <Caret Line="1093" Column="14" TopLine="463"/>
-      </Position24>
-      <Position25>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/syneditmiscclasses.pp"/>
-        <Caret Line="106" Column="22" TopLine="95"/>
-      </Position25>
-      <Position26>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="552" Column="22" TopLine="542"/>
-      </Position26>
-      <Position27>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="142" Column="5" TopLine="127"/>
-      </Position27>
-      <Position28>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="558" Column="20" TopLine="546"/>
-      </Position28>
-      <Position29>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="564" Column="15" TopLine="542"/>
-      </Position29>
-      <Position30>
-        <Filename Value="../../fpcupdeluxe/deluxebin/fpcupdeluxe/lazarus/components/synedit/synedittypes.pp"/>
-        <Caret Line="103" Column="42" TopLine="87"/>
-      </Position30>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes Count="0" ActiveMode=""/>
