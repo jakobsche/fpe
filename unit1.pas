@@ -6,10 +6,10 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, LazHelpHTML,
-  SynEdit, SynHighlighterPas, SynHighlighterJScript, SynHighlighterXML,
-  SynHighlighterHTML, SynHighlighterMulti, SynEditHighlighter,
-  SynHighlighterCpp, SynCompletion, SynHighlighterLFM, SynHighlighterAny,
-  PrintersDlgs;
+  ExtCtrls, ComCtrls, SynEdit, SynHighlighterPas, SynHighlighterJScript,
+  SynHighlighterXML, SynHighlighterHTML, SynHighlighterMulti,
+  SynEditHighlighter, SynHighlighterCpp, SynCompletion, SynHighlighterLFM,
+  SynHighlighterAny, PrintersDlgs, SynEditTypes;
 
 type
 
@@ -78,6 +78,7 @@ type
     HelpMenu: TMenuItem;
     MenuItem1: TMenuItem;
     PrintDialog: TPrintDialog;
+    StatusBar: TStatusBar;
     SynCompletion: TSynCompletion;
     SynLFmSyn: TSynLFMSyn;
     ViewLFm: TMenuItem;
@@ -159,6 +160,9 @@ type
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
     procedure SaveItemClick(Sender: TObject);
+    procedure SynEditKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
+    procedure SynEditStatusChange(Sender: TObject; Changes: TSynStatusChanges);
     procedure ViewSynClick(Sender: TObject);
   private
     FFileName: string;
@@ -537,6 +541,27 @@ end;
 procedure TForm1.SaveItemClick(Sender: TObject);
 begin
   Save
+end;
+
+procedure TForm1.SynEditKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+
+end;
+
+procedure TForm1.SynEditStatusChange(Sender: TObject; Changes: TSynStatusChanges
+  );
+const
+  Counter: Integer = 0;
+var
+  P: TPoint;
+begin
+  if scModified in Changes then
+    if (Sender as TSynEdit).Modified then StatusBar.Panels[0].Text := 'Geändert'
+    else StatusBar.Panels[0].Text := '';
+  P := Point(Counter, Counter div 2);
+  StatusBar.Panels[1].Text := Format('%d:%d', [P.X, P.Y]);
+  Inc(Counter)
 end;
 
 procedure TForm1.ViewSynClick(Sender: TObject);

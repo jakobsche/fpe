@@ -1,11 +1,11 @@
 object Form1: TForm1
   Left = 647
-  Height = 429
-  Top = 303
+  Height = 519
+  Top = 238
   Width = 638
   AllowDropFiles = True
   Caption = 'Free Pascal Editor'
-  ClientHeight = 429
+  ClientHeight = 519
   ClientWidth = 638
   Menu = MainMenu
   OnClose = FormClose
@@ -17,7 +17,7 @@ object Form1: TForm1
   LCLVersion = '2.0.6.0'
   inline SynEdit: TSynEdit
     Left = 0
-    Height = 429
+    Height = 501
     Top = 0
     Width = 638
     HelpType = htKeyword
@@ -29,6 +29,7 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
     TabOrder = 0
+    OnKeyDown = SynEditKeyDown
     Gutter.Width = 57
     Gutter.MouseActions = <>
     RightGutter.Width = 0
@@ -479,6 +480,7 @@ object Form1: TForm1
     MouseLinkColor.Foreground = clBlue
     LineHighlightColor.Background = clNone
     LineHighlightColor.Foreground = clNone
+    OnStatusChange = SynEditStatusChange
     inline SynLeftGutterPartList1: TSynGutterPartList
       object SynGutterMarks1: TSynGutterMarks
         Width = 24
@@ -514,6 +516,20 @@ object Form1: TForm1
         MouseActionsCollapsed = <>
       end
     end
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 18
+    Top = 501
+    Width = 638
+    Panels = <    
+      item
+        Width = 54
+      end    
+      item
+        Width = 50
+      end>
+    SimplePanel = False
   end
   object MainMenu: TMainMenu
     left = 112
