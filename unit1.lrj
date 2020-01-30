@@ -8,7 +8,7 @@
 {"hash":194749214,"name":"tform1.fileprint.caption","sourcebytes":[38,68,114,117,99,107,101,110],"value":"&Drucken"},
 {"hash":91717614,"name":"tform1.fileprintersetup.caption","sourcebytes":[68,114,117,99,107,101,114,32,38,101,105,110,114,105,99,104,116,101,110,32,46,46,46],"value":"Drucker &einrichten ..."},
 {"hash":48917582,"name":"tform1.fileclose.caption","sourcebytes":[38,83,99,104,108,105,101,195,159,101,110],"value":"&Schlie\u00DFen"},
-{"hash":146557694,"name":"tform1.exititem.caption","sourcebytes":[66,101,101,110,100,101,110],"value":"Beenden"},
+{"hash":146557694,"name":"tform1.fileexit.caption","sourcebytes":[66,101,101,110,100,101,110],"value":"Beenden"},
 {"hash":147898686,"name":"tform1.editmenu.caption","sourcebytes":[66,38,101,97,114,98,101,105,116,101,110],"value":"B&earbeiten"},
 {"hash":104228823,"name":"tform1.menuitem6.caption","sourcebytes":[82,195,188,99,107,103,195,164,110,103,105,103],"value":"R\u00FCckg\u00E4ngig"},
 {"hash":221201806,"name":"tform1.menuitem11.caption","sourcebytes":[87,105,101,100,101,38,114,104,101,114,115,116,101,108,108,101,110],"value":"Wiede&rherstellen"},

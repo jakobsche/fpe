@@ -77,12 +77,13 @@ type
     MainMenu: TMainMenu;
     HelpMenu: TMenuItem;
     MenuItem1: TMenuItem;
+    PrintDialog: TPrintDialog;
     SynCompletion: TSynCompletion;
     SynLFmSyn: TSynLFMSyn;
     ViewLFm: TMenuItem;
     N1: TMenuItem;
     MenuItem10: TMenuItem;
-    ExitItem: TMenuItem;
+    FileExit: TMenuItem;
     MenuItem11: TMenuItem;
     MenuItem12: TMenuItem;
     MenuItem13: TMenuItem;
@@ -101,7 +102,6 @@ type
     MenuItem22: TMenuItem;
     MenuItem23: TMenuItem;
     HelpAbout: TMenuItem;
-    PrintDialog: TPrintDialog;
     PrinterSetupDialog: TPrinterSetupDialog;
     ViewMenu: TMenuItem;
     FileClose: TMenuItem;
@@ -143,7 +143,7 @@ type
     procedure EditCopyClick(Sender: TObject);
     procedure EditCutClick(Sender: TObject);
     procedure EditPasteClick(Sender: TObject);
-    procedure ExitItemClick(Sender: TObject);
+    procedure FileExitClick(Sender: TObject);
     procedure FileCloseClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
@@ -170,6 +170,7 @@ type
     function Save: Boolean;
     function SaveAs: Boolean;
     function GuessHighlighter: TSynCustomHighLighter;
+    procedure PrintTestPage;
   published
     property FileName: string read FFileName write SetFileName;
   end;
@@ -179,7 +180,7 @@ var
 
 implementation
 
-uses About, FormEx, MasterFm, Patch;
+uses About, FormEx, MasterFm, Patch, Printers, Types;
 
 {$R *.lfm}
 
@@ -410,7 +411,9 @@ end;
 
 procedure TForm1.FilePrintClick(Sender: TObject);
 begin
-  PrintDialog.Execute
+  if PrintDialog.Execute then begin
+    PrintTestPage
+  end;
 end;
 
 procedure TForm1.FilePrinterSetupClick(Sender: TObject);
@@ -423,7 +426,7 @@ begin
   if FontDialog.Execute then SynEdit.Font := FontDialog.Font;
 end;
 
-procedure TForm1.ExitItemClick(Sender: TObject);
+procedure TForm1.FileExitClick(Sender: TObject);
 begin
   MasterForm.Close
 end;
@@ -586,6 +589,23 @@ end;
 function TForm1.GuessHighlighter: TSynCustomHighLighter;
 begin
   Result := nil;
+end;
+
+procedure TForm1.PrintTestPage;
+const
+  TestText = 'Hallo, Drucker!';
+var
+  TW, TH, X, Y: Integer;
+begin
+  Printer.BeginDoc;
+  Printer.BeginPage;
+  TH := Printer.Canvas.TextHeight(TestText);
+  TW := Printer.Canvas.TextWidth(TestText);
+  X := (Printer.PageWidth - TW) div 2;
+  Y := (Printer.PageHeight - TH) div 2;
+  Printer.Canvas.TextOut(X, Y, TestText);
+  Printer.EndPage;
+  Printer.EndDoc
 end;
 
 initialization

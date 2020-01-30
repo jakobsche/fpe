@@ -20,6 +20,7 @@ object Form1: TForm1
     Height = 429
     Top = 0
     Width = 638
+    HelpType = htKeyword
     Align = alClient
     Font.Height = -13
     Font.Name = 'Courier New'
@@ -458,7 +459,8 @@ object Form1: TForm1
     MouseTextActions = <>
     MouseSelActions = <>
     Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoSmartTabs, eoTrimTrailingSpaces]
-    VisibleSpecialChars = [vscSpace, vscTabAtLast]
+    VisibleSpecialChars = [vscSpace, vscTabAtFirst, vscTabAtLast]
+    ScrollBars = ssAutoBoth
     SelectedColor.BackPriority = 50
     SelectedColor.ForePriority = 50
     SelectedColor.FramePriority = 50
@@ -553,11 +555,11 @@ object Form1: TForm1
         ShortCut = 16499
         OnClick = FileCloseClick
       end
-      object ExitItem: TMenuItem
+      object FileExit: TMenuItem
         Caption = 'Beenden'
         ShortCut = 4211
         ShortCutKey2 = 32883
-        OnClick = ExitItemClick
+        OnClick = FileExitClick
       end
     end
     object EditMenu: TMenuItem
@@ -770,10 +772,6 @@ object Form1: TForm1
     left = 335
     top = 24
   end
-  object PrintDialog: TPrintDialog
-    left = 453
-    top = 30
-  end
   object HTMLHelpDatabase: THTMLHelpDatabase
     BaseURL = 'file://help'
     AutoRegister = True
@@ -813,5 +811,9 @@ object Form1: TForm1
     ToggleReplaceWhole = False
     left = 195
     top = 296
+  end
+  object PrintDialog: TPrintDialog
+    left = 440
+    top = 96
   end
 end
