@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectSession>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <BuildModes Active="Default">
       <SessionMatrixOptions Count="12">
         <Item1 ID="612369546143" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
@@ -18,7 +18,7 @@
         <Item12 ID="150025277392" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
       </SessionMatrixOptions>
     </BuildModes>
-    <Units Count="6">
+    <Units Count="5">
       <Unit0>
         <Filename Value="fpe.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -75,23 +75,8 @@
         <CursorPos Y="2"/>
         <UsageCount Value="52"/>
       </Unit4>
-      <Unit5>
-        <Filename Value="../../../fpc_tools/lazarus/lcl/interfaces/cocoa/cocoa_extra.pas"/>
-        <UnitName Value="Cocoa_Extra"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="3"/>
-        <CursorPos X="27" Y="18"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit5>
     </Units>
-    <JumpHistory Count="1">
-      <Position1>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="563" Column="33" TopLine="542"/>
-      </Position1>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes Count="0" ActiveMode=""/>
