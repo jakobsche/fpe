@@ -4,25 +4,25 @@
     <Version Value="11"/>
     <BuildModes Active="Default">
       <SessionMatrixOptions Count="12">
-        <Item1 ID="612369546143" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item2 ID="879146123823" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item3 ID="391304443071" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item4 ID="174405934437" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item5 ID="326296564315" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item6 ID="792023256322" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item7 ID="486913845138" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item8 ID="540157877525" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item9 ID="772150245584" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item10 ID="775262025017" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item11 ID="867826483782" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item12 ID="150025277392" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item1 ID="612369546143" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item2 ID="879146123823" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item3 ID="391304443071" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item4 ID="174405934437" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item5 ID="326296564315" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item6 ID="792023256322" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item7 ID="486913845138" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item8 ID="540157877525" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item9 ID="772150245584" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item10 ID="775262025017" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item11 ID="867826483782" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item12 ID="150025277392" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
       </SessionMatrixOptions>
     </BuildModes>
-    <Units Count="5">
+    <Units Count="6">
       <Unit0>
         <Filename Value="fpe.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="4"/>
         <CursorPos X="58" Y="16"/>
         <UsageCount Value="113"/>
         <Loaded Value="True"/>
@@ -34,7 +34,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="542"/>
         <CursorPos X="33" Y="563"/>
         <UsageCount Value="113"/>
@@ -48,7 +47,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="About"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="67"/>
         <CursorPos X="6" Y="73"/>
         <UsageCount Value="110"/>
@@ -62,7 +61,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MasterFm"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="33"/>
         <CursorPos Y="44"/>
         <UsageCount Value="90"/>
@@ -76,8 +75,23 @@
         <CursorPos Y="2"/>
         <UsageCount Value="52"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="../../../fpc_tools/lazarus/lcl/interfaces/cocoa/cocoa_extra.pas"/>
+        <UnitName Value="Cocoa_Extra"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="3"/>
+        <CursorPos X="27" Y="18"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit5>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="1">
+      <Position1>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="563" Column="33" TopLine="542"/>
+      </Position1>
+    </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes Count="0" ActiveMode=""/>

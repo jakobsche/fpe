@@ -27,22 +27,11 @@
       <BuildNr Value="11"/>
       <Language Value="0407"/>
     </VersionInfo>
-    <MacroValues Count="12">
-      <Macro1 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro2 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro3 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro4 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro5 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro6 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro7 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro8 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro9 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro10 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro11 Name="LCLWidgetType" Value="cocoa"/>
-      <Macro12 Name="LCLWidgetType" Value="cocoa"/>
-    </MacroValues>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
+      <SharedMatrixOptions Count="1">
+        <Item1 ID="076887840083" Targets="*-darwin" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+      </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
