@@ -5,7 +5,7 @@ object Form1: TForm1
   Width = 638
   AllowDropFiles = True
   Caption = 'Free Pascal Editor'
-  ClientHeight = 500
+  ClientHeight = 519
   ClientWidth = 638
   Menu = MainMenu
   OnClose = FormClose
@@ -17,7 +17,7 @@ object Form1: TForm1
   LCLVersion = '2.0.6.0'
   inline SynEdit: TSynEdit
     Left = 0
-    Height = 480
+    Height = 501
     Top = 0
     Width = 638
     HelpType = htKeyword
@@ -30,7 +30,7 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 0
     OnKeyDown = SynEditKeyDown
-    Gutter.Width = 67
+    Gutter.Width = 57
     Gutter.MouseActions = <>
     RightGutter.Width = 0
     RightGutter.MouseActions = <>
@@ -487,7 +487,7 @@ object Form1: TForm1
         MouseActions = <>
       end
       object SynGutterLineNumber1: TSynGutterLineNumber
-        Width = 27
+        Width = 17
         MouseActions = <>
         MarkupInfo.Background = clBtnFace
         MarkupInfo.Foreground = clNone
@@ -519,8 +519,8 @@ object Form1: TForm1
   end
   object StatusBar: TStatusBar
     Left = 0
-    Height = 20
-    Top = 480
+    Height = 18
+    Top = 501
     Width = 638
     Panels = <    
       item
@@ -573,7 +573,7 @@ object Form1: TForm1
       end
       object FileExit: TMenuItem
         Caption = 'Beenden'
-        ShortCut = 4211
+        ShortCut = 4177
         ShortCutKey2 = 32883
         OnClick = FileExitClick
       end
