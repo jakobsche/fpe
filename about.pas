@@ -22,7 +22,7 @@ type
     ContributorsBtn: TBitBtn;
     GroupBox1: TGroupBox;
     Label1: TLabel;
-    Label2: TLabel;
+    VersionLabel: TLabel;
     Label3: TLabel;
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
@@ -43,7 +43,7 @@ var
 
 implementation
 
-uses FormEx, LCLIntf;
+uses FormEx, LCLIntf, Global;
 
 {$R *.lfm}
 
@@ -51,7 +51,8 @@ uses FormEx, LCLIntf;
 
 procedure TAboutBox.FormCreate(Sender: TObject);
 begin
-  FormAdjust(Self)
+  FormAdjust(Self);
+  VersionLabel.Caption := Format('Version %s', [Version])
 end;
 
 procedure TAboutBox.MediumBtnClick(Sender: TObject);

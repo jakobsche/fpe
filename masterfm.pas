@@ -135,11 +135,11 @@ begin
     SlaveList.Delete(i);
   if (SlaveCount = 0) then Close
   else begin
-    {if i >= SlaveCount then i := SlaveCount - 1;
+    if i >= SlaveCount then i := SlaveCount - 1;
     with SlaveForms[i] do begin
       Show;
       BringToFront
-    end;}
+    end;
   end;
 end;
 

@@ -23,6 +23,7 @@
 {"hash":140114772,"name":"tform1.viewmenu.caption","sourcebytes":[38,65,110,115,105,99,104,116],"value":"&Ansicht"},
 {"hash":19120888,"name":"tform1.viewmulti.caption","sourcebytes":[38,65,117,116,111,109,97,116,105,115,99,104],"value":"&Automatisch"},
 {"hash":173531,"name":"tform1.viewcpp.caption","sourcebytes":[38,67,43,43],"value":"&C++"},
+{"hash":130355724,"name":"tform1.viewfreepascal.caption","sourcebytes":[38,70,114,101,101,32,80,97,115,99,97,108],"value":"&Free Pascal"},
 {"hash":2808092,"name":"tform1.viewhtml.caption","sourcebytes":[38,72,84,77,76],"value":"&HTML"},
 {"hash":112302260,"name":"tform1.viewjs.caption","sourcebytes":[38,74,97,118,97,83,99,114,105,112,116],"value":"&JavaScript"},
 {"hash":239318117,"name":"tform1.viewlfm.caption","sourcebytes":[38,76,97,122,97,114,117,115,45,70,111,114,109,117,108,97,114,114,101,115,115,111,117,114,99,101],"value":"&Lazarus-Formularressource"},
@@ -41,7 +42,7 @@
 {"hash":213806869,"name":"tform1.menuitem3.caption","sourcebytes":[72,105,108,102,101,105,110,104,97,108,116,101],"value":"Hilfeinhalte"},
 {"hash":190867128,"name":"tform1.menuitem4.caption","sourcebytes":[72,105,108,102,101,45,38,73,110,100,101,120],"value":"Hilfe-&Index"},
 {"hash":101233093,"name":"tform1.menuitem14.caption","sourcebytes":[38,79,110,108,105,110,101,104,105,108,102,101],"value":"&Onlinehilfe"},
-{"hash":25555966,"name":"tform1.menuitem16.caption","sourcebytes":[38,76,105,122,101,110,122,105,110,102,111,114,109,97,116,105,111,110],"value":"&Lizenzinformation"},
+{"hash":25555966,"name":"tform1.helplicense.caption","sourcebytes":[38,76,105,122,101,110,122,105,110,102,111,114,109,97,116,105,111,110],"value":"&Lizenzinformation"},
 {"hash":46830190,"name":"tform1.menuitem22.caption","sourcebytes":[78,97,38,99,104,32,85,112,100,97,116,101,115,32,115,117,99,104,101,110],"value":"Na&ch Updates suchen"},
 {"hash":13445314,"name":"tform1.helpabout.caption","sourcebytes":[195,156,98,101,114],"value":"\u00DCber"}
 ]}

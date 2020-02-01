@@ -1,11 +1,11 @@
 object Form1: TForm1
   Left = 647
   Height = 519
-  Top = 216
+  Top = 213
   Width = 638
   AllowDropFiles = True
   Caption = 'Free Pascal Editor'
-  ClientHeight = 500
+  ClientHeight = 493
   ClientWidth = 638
   Menu = MainMenu
   OnClose = FormClose
@@ -14,10 +14,10 @@ object Form1: TForm1
   OnDestroy = FormDestroy
   OnDropFiles = FormDropFiles
   Position = poDefault
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   inline SynEdit: TSynEdit
     Left = 0
-    Height = 480
+    Height = 473
     Top = 0
     Width = 638
     HelpType = htKeyword
@@ -30,7 +30,7 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 0
     OnKeyDown = SynEditKeyDown
-    Gutter.Width = 67
+    Gutter.Width = 57
     Gutter.MouseActions = <>
     RightGutter.Width = 0
     RightGutter.MouseActions = <>
@@ -487,7 +487,7 @@ object Form1: TForm1
         MouseActions = <>
       end
       object SynGutterLineNumber1: TSynGutterLineNumber
-        Width = 27
+        Width = 17
         MouseActions = <>
         MarkupInfo.Background = clBtnFace
         MarkupInfo.Foreground = clNone
@@ -520,7 +520,7 @@ object Form1: TForm1
   object StatusBar: TStatusBar
     Left = 0
     Height = 20
-    Top = 480
+    Top = 473
     Width = 638
     Panels = <    
       item
@@ -638,6 +638,9 @@ object Form1: TForm1
         ShowAlwaysCheckable = True
         OnClick = ViewSynClick
       end
+      object ViewFreePascal: TMenuItem
+        Caption = '&Free Pascal'
+      end
       object ViewHTML: TMenuItem
         Caption = '&HTML'
         ShowAlwaysCheckable = True
@@ -715,8 +718,9 @@ object Form1: TForm1
       object MenuItem15: TMenuItem
         Caption = '-'
       end
-      object MenuItem16: TMenuItem
+      object HelpLicense: TMenuItem
         Caption = '&Lizenzinformation'
+        OnClick = HelpLicenseClick
       end
       object MenuItem22: TMenuItem
         Caption = 'Na&ch Updates suchen'
@@ -748,6 +752,7 @@ object Form1: TForm1
     DirectiveAttri.Style = [fsBold]
     CompilerMode = pcmObjFPC
     NestedComments = True
+    TypeHelpers = False
     D4syntax = False
     left = 24
     top = 232
@@ -831,5 +836,13 @@ object Form1: TForm1
   object PrintDialog: TPrintDialog
     left = 440
     top = 96
+  end
+  object SynFreePascalSyn: TSynFreePascalSyn
+    Enabled = False
+    CompilerMode = pcmObjFPC
+    NestedComments = True
+    TypeHelpers = False
+    left = 552
+    top = 232
   end
 end

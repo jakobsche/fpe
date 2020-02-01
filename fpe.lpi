@@ -58,7 +58,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="5">
+    <Units Count="6">
       <Unit0>
         <Filename Value="fpe.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -91,6 +91,11 @@
         <Filename Value="makefile.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="global.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Global"/>
+      </Unit5>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

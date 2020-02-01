@@ -9,7 +9,7 @@ object AboutBox: TAboutBox
   ClientWidth = 349
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.1.0.0'
   object BitBtn1: TBitBtn
     Left = 128
     Height = 30
@@ -41,13 +41,13 @@ object AboutBox: TAboutBox
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Initiator, Urheber'
     ClientHeight = 93
-    ClientWidth = 321
+    ClientWidth = 329
     TabOrder = 1
     object Label3: TLabel
       Left = 8
       Height = 16
       Top = 8
-      Width = 308
+      Width = 316
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
       Caption = 'Copyright 2020 Andreas Jakobsche'
@@ -109,11 +109,11 @@ object AboutBox: TAboutBox
       TabOrder = 5
     end
   end
-  object Label2: TLabel
+  object VersionLabel: TLabel
     Left = 8
-    Height = 16
+    Height = 18
     Top = 48
-    Width = 66
+    Width = 63
     Caption = 'Version 1.0'
     ParentColor = False
   end

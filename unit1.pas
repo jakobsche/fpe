@@ -77,9 +77,11 @@ type
     MainMenu: TMainMenu;
     HelpMenu: TMenuItem;
     MenuItem1: TMenuItem;
+    ViewFreePascal: TMenuItem;
     PrintDialog: TPrintDialog;
     StatusBar: TStatusBar;
     SynCompletion: TSynCompletion;
+    SynFreePascalSyn: TSynFreePascalSyn;
     SynLFmSyn: TSynLFMSyn;
     ViewLFm: TMenuItem;
     N1: TMenuItem;
@@ -93,7 +95,7 @@ type
     EditPaste: TMenuItem;
     MenuItem14: TMenuItem;
     MenuItem15: TMenuItem;
-    MenuItem16: TMenuItem;
+    HelpLicense: TMenuItem;
     MenuItem17: TMenuItem;
     MenuItem18: TMenuItem;
     MenuItem19: TMenuItem;
@@ -155,6 +157,7 @@ type
     procedure HelpAboutClick(Sender: TObject);
     procedure FilePrintClick(Sender: TObject);
     procedure FilePrinterSetupClick(Sender: TObject);
+    procedure HelpLicenseClick(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure NewItemClick(Sender: TObject);
     procedure OpenItemClick(Sender: TObject);
@@ -184,7 +187,7 @@ var
 
 implementation
 
-uses About, FormEx, MasterFm, Patch, Printers, Types;
+uses About, FormEx, LCLIntf, MasterFm, Patch, Printers, Types;
 
 {$R *.lfm}
 
@@ -357,7 +360,8 @@ begin
     AddItem(ViewCpp, SynCppSyn);
     AddItem(ViewText, nil);
     AddItem(ViewLFm, SynLFmSyn);
-    Switch(ViewPas)
+    AddItem(ViewFreePascal, SynFreePascalSyn);
+    Switch(ViewFreePascal)
   end;
   with HTMLHelpDataBase do begin
     {$ifdef Darwin}
@@ -423,6 +427,11 @@ end;
 procedure TForm1.FilePrinterSetupClick(Sender: TObject);
 begin
   PrinterSetupDialog.Execute
+end;
+
+procedure TForm1.HelpLicenseClick(Sender: TObject);
+begin
+  OpenDocument('LICENSE')
 end;
 
 procedure TForm1.MenuItem1Click(Sender: TObject);
