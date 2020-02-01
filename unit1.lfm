@@ -5,7 +5,7 @@ object Form1: TForm1
   Width = 638
   AllowDropFiles = True
   Caption = 'Free Pascal Editor'
-  ClientHeight = 493
+  ClientHeight = 500
   ClientWidth = 638
   Menu = MainMenu
   OnClose = FormClose
@@ -14,10 +14,10 @@ object Form1: TForm1
   OnDestroy = FormDestroy
   OnDropFiles = FormDropFiles
   Position = poDefault
-  LCLVersion = '2.1.0.0'
+  LCLVersion = '2.0.6.0'
   inline SynEdit: TSynEdit
     Left = 0
-    Height = 473
+    Height = 480
     Top = 0
     Width = 638
     HelpType = htKeyword
@@ -30,7 +30,7 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 0
     OnKeyDown = SynEditKeyDown
-    Gutter.Width = 57
+    Gutter.Width = 67
     Gutter.MouseActions = <>
     RightGutter.Width = 0
     RightGutter.MouseActions = <>
@@ -487,7 +487,7 @@ object Form1: TForm1
         MouseActions = <>
       end
       object SynGutterLineNumber1: TSynGutterLineNumber
-        Width = 17
+        Width = 27
         MouseActions = <>
         MarkupInfo.Background = clBtnFace
         MarkupInfo.Foreground = clNone
@@ -520,7 +520,7 @@ object Form1: TForm1
   object StatusBar: TStatusBar
     Left = 0
     Height = 20
-    Top = 473
+    Top = 480
     Width = 638
     Panels = <    
       item
@@ -752,7 +752,6 @@ object Form1: TForm1
     DirectiveAttri.Style = [fsBold]
     CompilerMode = pcmObjFPC
     NestedComments = True
-    TypeHelpers = False
     D4syntax = False
     left = 24
     top = 232
@@ -841,7 +840,6 @@ object Form1: TForm1
     Enabled = False
     CompilerMode = pcmObjFPC
     NestedComments = True
-    TypeHelpers = False
     left = 552
     top = 232
   end

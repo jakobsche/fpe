@@ -21,7 +21,7 @@ deploy/$(TARGET_CPU)-linux/help/contributors.html: help/contributors.html deploy
 	cp -fpv help/contributors.html deploy/$(TARGET_CPU)-linux/help
 	
 deploy/$(TARGET_CPU)-linux/help: deploy/$(TARGET_CPU)-$(TARGET_OS)
-	mkdir deploy/$(TARGET_CPU)-linux/help
+	mkdir -p deploy/$(TARGET_CPU)-linux/help
 	
 deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe: lib/$(TARGET_CPU)-$(TARGET_OS)/fpe deploy/$(TARGET_CPU)-$(TARGET_OS)
 	strip -o deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe lib/$(TARGET_CPU)-$(TARGET_OS)/fpe
@@ -57,5 +57,5 @@ deploy/$(TARGET_CPU)-$(TARGET_OS)/LICENSE: LICENSE
 	cp -fpv LICENSE deploy/$(TARGET_CPU)-$(TARGET_OS)/
 
 lib/$(TARGET_CPU)-darwin/fpe.app, lib/$(TARGET_CPU)-$(TARGET_OS)/fpe, lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.po: fpe.lpi help *.pas *.lfm *.lrj
-	lazbuild --language=de fpe.lpi
-	cp -fpRv help lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/
+	lazbuild --os=$(TARGET_OS) --cpu=$(TARGET_CPU) --language=de fpe.lpi
+	cp -fpRv help lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/ || cp -fpRv help lib/$(TARGET_CPU)-$(TARGET_OS)/ 
