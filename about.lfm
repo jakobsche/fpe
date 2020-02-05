@@ -1,19 +1,19 @@
 object AboutBox: TAboutBox
   Left = 551
-  Height = 322
+  Height = 0
   Top = 288
-  Width = 349
+  Width = 0
   BorderStyle = bsDialog
   Caption = 'Über Free Pascal Editor'
-  ClientHeight = 322
-  ClientWidth = 349
+  ClientHeight = 0
+  ClientWidth = 0
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '2.1.0.0'
+  LCLVersion = '2.0.6.0'
   object BitBtn1: TBitBtn
     Left = 128
     Height = 30
-    Top = 283
+    Top = -39
     Width = 75
     Anchors = [akLeft, akBottom]
     Default = True
@@ -26,7 +26,7 @@ object AboutBox: TAboutBox
     Left = 8
     Height = 32
     Top = 8
-    Width = 331
+    Width = 0
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Editor, der für Quelltexte in verschiedenen '#10'Programmiersprachen optimiert wird.'
@@ -37,17 +37,17 @@ object AboutBox: TAboutBox
     Left = 8
     Height = 112
     Top = 80
-    Width = 331
+    Width = 0
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Initiator, Urheber'
     ClientHeight = 93
-    ClientWidth = 329
+    ClientWidth = 0
     TabOrder = 1
     object Label3: TLabel
       Left = 8
       Height = 16
       Top = 8
-      Width = 316
+      Width = 0
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
       Caption = 'Copyright 2020 Andreas Jakobsche'
@@ -111,9 +111,9 @@ object AboutBox: TAboutBox
   end
   object VersionLabel: TLabel
     Left = 8
-    Height = 18
+    Height = 16
     Top = 48
-    Width = 63
+    Width = 66
     Caption = 'Version 1.0'
     ParentColor = False
   end

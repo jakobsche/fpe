@@ -655,6 +655,10 @@ object Form1: TForm1
         Caption = '&Lazarus-Formularressource'
         OnClick = ViewSynClick
       end
+      object ViewMakefile: TMenuItem
+        Caption = '&Makefile'
+        OnClick = ViewSynClick
+      end
       object ViewPas: TMenuItem
         Caption = '&Pascal'
         ShowAlwaysCheckable = True

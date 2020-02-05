@@ -9,7 +9,7 @@ uses
   ExtCtrls, ComCtrls, SynEdit, SynHighlighterPas, SynHighlighterJScript,
   SynHighlighterXML, SynHighlighterHTML, SynHighlighterMulti,
   SynEditHighlighter, SynHighlighterCpp, SynCompletion, SynHighlighterLFM,
-  SynHighlighterAny, PrintersDlgs, SynEditTypes;
+  SynHighlighterAny, PrintersDlgs, SynEditTypes, SynMakeSyn;
 
 type
 
@@ -77,6 +77,7 @@ type
     MainMenu: TMainMenu;
     HelpMenu: TMenuItem;
     MenuItem1: TMenuItem;
+    ViewMakefile: TMenuItem;
     ViewFreePascal: TMenuItem;
     PrintDialog: TPrintDialog;
     StatusBar: TStatusBar;
@@ -172,6 +173,7 @@ type
     procedure SetFileName(Value: string);
   public
     HLSwitch: THighlighterSwitch;
+    SynMakeSyn: TSynMakefileSyn;
     function GetConfigFileName: string;
     procedure OpenFile(AFileName: string);
     function Save: Boolean;
@@ -187,7 +189,7 @@ var
 
 implementation
 
-uses About, FormEx, LCLIntf, MasterFm, Patch, Printers, Types;
+uses About, FormEx, HeadFm, LCLIntf, Patch, Printers, Types;
 
 {$R *.lfm}
 
@@ -347,6 +349,7 @@ var
   i, SlaveIndex: Integer;
   F: TForm1;
 begin
+  SynMakeSyn := TSynMakefileSyn.Create(Self);
   FormAdjust(Self);
   HLSwitch := THighlighterSwitch.Create(Self);
   HLSwitch.SynEdit := SynEdit;
@@ -361,6 +364,7 @@ begin
     AddItem(ViewText, nil);
     AddItem(ViewLFm, SynLFmSyn);
     AddItem(ViewFreePascal, SynFreePascalSyn);
+    AddItem(ViewMakefile, SynMakeSyn);
     Switch(ViewFreePascal)
   end;
   with HTMLHelpDataBase do begin
@@ -372,7 +376,7 @@ begin
       {$endif}
     {$endif}
   end;
-  SlaveIndex := MasterForm.AddSlave(Sender as TForm1);
+  SlaveIndex := HeadForm.AddSlave(Sender as TForm1);
   if SlaveIndex = 0 then begin
     if Application.ParamCount > 0 then
       if FileExists(Application.Params[1]) then begin
@@ -384,16 +388,16 @@ begin
         F := TForm1.Create(Application);
         F.SynEdit.Lines.LoadFromFile(Application.Params[i]);
         F.FileName := Application.Params[i];
-        MasterForm.AddSlave(F)
+        HeadForm.AddSlave(F)
       end;
   end;
-  MasterForm.SendToBack;
-  MasterForm.Hide
+  HeadForm.SendToBack;
+  HeadForm.Hide
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-  MasterForm.RemoveSlave(Sender as TForm1);
+  HeadForm.RemoveSlave(Sender as TForm1);
   {ShowMessageFmt('Formulare: %d', [MasterForm.SlaveCount])}
 end;
 
@@ -441,7 +445,7 @@ end;
 
 procedure TForm1.FileExitClick(Sender: TObject);
 begin
-  MasterForm.Close
+  HeadForm.Close
 end;
 
 procedure TForm1.FileCloseClick(Sender: TObject);
