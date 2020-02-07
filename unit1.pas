@@ -110,13 +110,13 @@ type
     ViewMenu: TMenuItem;
     FileClose: TMenuItem;
     FormsMenu: TMenuItem;
-    FormNew: TMenuItem;
-    MenuItem28: TMenuItem;
-    MenuItem29: TMenuItem;
-    MenuItem30: TMenuItem;
+    FormsNew: TMenuItem;
+    FormsTile: TMenuItem;
+    FormsCascade: TMenuItem;
+    FormsAdjust: TMenuItem;
     MenuItem31: TMenuItem;
-    MenuItem32: TMenuItem;
-    MenuItem33: TMenuItem;
+    FormsHide: TMenuItem;
+    FormsShow: TMenuItem;
     SynCppSyn: TSynCppSyn;
     SynMultiSyn: TSynMultiSyn;
     ViewMulti: TMenuItem;
@@ -154,12 +154,17 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormDropFiles(Sender: TObject; const FileNames: array of String);
-    procedure FormNewClick(Sender: TObject);
+    procedure FormsAdjustClick(Sender: TObject);
+    procedure FormsCascadeClick(Sender: TObject);
+    procedure FormsNewClick(Sender: TObject);
+    procedure FormsShowClick(Sender: TObject);
+    procedure FormsTileClick(Sender: TObject);
     procedure HelpAboutClick(Sender: TObject);
     procedure FilePrintClick(Sender: TObject);
     procedure FilePrinterSetupClick(Sender: TObject);
     procedure HelpLicenseClick(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
+    procedure FormsHideClick(Sender: TObject);
     procedure NewItemClick(Sender: TObject);
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
@@ -411,9 +416,29 @@ begin
     TForm1.Create(Application).SynEdit.Lines.LoadFromFile(FileNames[i]);
 end;
 
-procedure TForm1.FormNewClick(Sender: TObject);
+procedure TForm1.FormsAdjustClick(Sender: TObject);
+begin
+  HeadForm.AdjustSlaves
+end;
+
+procedure TForm1.FormsCascadeClick(Sender: TObject);
+begin
+  HeadForm.CascadeSlaves
+end;
+
+procedure TForm1.FormsNewClick(Sender: TObject);
 begin
   TForm1.Create(Application)
+end;
+
+procedure TForm1.FormsShowClick(Sender: TObject);
+begin
+  HeadForm.SlaveSelDlg.Execute
+end;
+
+procedure TForm1.FormsTileClick(Sender: TObject);
+begin
+  HeadForm.TileSlaves
 end;
 
 procedure TForm1.HelpAboutClick(Sender: TObject);
@@ -441,6 +466,11 @@ end;
 procedure TForm1.MenuItem1Click(Sender: TObject);
 begin
   if FontDialog.Execute then SynEdit.Font := FontDialog.Font;
+end;
+
+procedure TForm1.FormsHideClick(Sender: TObject);
+begin
+  Hide
 end;
 
 procedure TForm1.FileExitClick(Sender: TObject);

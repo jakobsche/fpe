@@ -1,8 +1,6 @@
-object HeadForm: THeadForm
-  Left = 695
-  Height = 240
-  Top = 423
-  Width = 320
+inherited HeadForm: THeadForm
+  Left = 560
+  Top = 50
   Caption = 'HeadForm'
-  LCLVersion = '2.0.6.0'
+  WindowState = wsNormal
 end

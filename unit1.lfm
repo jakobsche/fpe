@@ -684,27 +684,32 @@ object Form1: TForm1
     end
     object FormsMenu: TMenuItem
       Caption = 'Fenster'
-      object FormNew: TMenuItem
+      object FormsNew: TMenuItem
         Caption = '&Neues Fenster'
-        OnClick = FormNewClick
+        OnClick = FormsNewClick
       end
-      object MenuItem28: TMenuItem
-        Caption = 'Kachel'
+      object FormsTile: TMenuItem
+        Caption = '&Kachel'
+        OnClick = FormsTileClick
       end
-      object MenuItem29: TMenuItem
-        Caption = 'Hintereinander'
+      object FormsCascade: TMenuItem
+        Caption = '&Hintereinander'
+        OnClick = FormsCascadeClick
       end
-      object MenuItem30: TMenuItem
+      object FormsAdjust: TMenuItem
         Caption = '&Alle anordnen'
+        OnClick = FormsAdjustClick
       end
       object MenuItem31: TMenuItem
         Caption = '-'
       end
-      object MenuItem32: TMenuItem
-        Caption = 'Verbergen'
+      object FormsHide: TMenuItem
+        Caption = '&Verbergen'
+        OnClick = FormsHideClick
       end
-      object MenuItem33: TMenuItem
-        Caption = 'Anzeigen'
+      object FormsShow: TMenuItem
+        Caption = 'An&zeigen ...'
+        OnClick = FormsShowClick
       end
     end
     object HelpMenu: TMenuItem
@@ -739,10 +744,12 @@ object Form1: TForm1
     end
   end
   object OpenDialog: TOpenDialog
+    Title = 'Open existing file'
     left = 112
     top = 112
   end
   object SaveDialog: TSaveDialog
+    Title = 'Save file as'
     left = 232
     top = 56
   end
@@ -761,6 +768,7 @@ object Form1: TForm1
     top = 232
   end
   object SynJScriptSyn: TSynJScriptSyn
+    DefaultFilter = 'Javascript Files (*.js)|*.js'
     Enabled = False
     left = 104
     top = 232
@@ -810,6 +818,7 @@ object Form1: TForm1
     top = 112
   end
   object FontDialog: TFontDialog
+    Title = 'Select a font'
     MinFontSize = 0
     MaxFontSize = 0
     left = 528
@@ -841,6 +850,7 @@ object Form1: TForm1
     top = 96
   end
   object SynFreePascalSyn: TSynFreePascalSyn
+    DefaultFilter = 'Pascal Files (*.pas,*.dpr,*.dpk,*.inc)|*.pas;*.dpr;*.dpk;*.inc'
     Enabled = False
     CompilerMode = pcmObjFPC
     NestedComments = True
