@@ -8,16 +8,18 @@
 
 DEPLOY: deploy/$(TARGET_CPU)-$(TARGET_OS).zip
 
-deploy/$(TARGET_CPU)-darwin.zip: BUNDLE README.md LICENSE
+deploy/$(TARGET_CPU)-darwin.zip: BUNDLE README.md LICENSE deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe
 	mkdir -p deploy/$(TARGET_CPU)-$(TARGET_OS)
 	cp -fpv README.md deploy/$(TARGET_CPU)-$(TARGET_OS)/
 	cp -fpv LICENSE deploy/$(TARGET_CPU)-$(TARGET_OS)/
 	cp -fpvR fpe.app deploy/$(TARGET_CPU)-$(TARGET_OS)/
-	cp -fpv lib/$(TARGET_CPU)-$(TARGET_OS)/fpe deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/
 	cp -fpv lib/$(TARGET_CPU)-$(TARGET_OS)/fpe.po deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/
 	cp -fpv LICENSE deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/
 	cp -fpvR help deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/
 	zip -ru deploy/$(TARGET_CPU)-$(TARGET_OS).zip deploy/$(TARGET_CPU)-$(TARGET_OS)
+
+deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe: lib/$(TARGET_CPU)-$(TARGET_OS)/fpe
+	strip -o deploy/$(TARGET_CPU)-$(TARGET_OS)/fpe.app/Contents/MacOS/fpe lib/$(TARGET_CPU)-$(TARGET_OS)/fpe
 
 # Ziel Bundle erstellen: 
 # - erzeugt kein .po-file, dafür muß mit Lazarus kompiliert werden
