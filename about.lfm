@@ -1,19 +1,19 @@
 object AboutBox: TAboutBox
-  Left = 551
-  Height = 0
-  Top = 288
-  Width = 0
+  Left = 598
+  Height = 246
+  Top = 108
+  Width = 366
   BorderStyle = bsDialog
   Caption = 'Über Free Pascal Editor'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 246
+  ClientWidth = 366
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.0.6.0'
-  object BitBtn1: TBitBtn
-    Left = 128
+  object OKBtn: TBitBtn
+    Left = 146
     Height = 30
-    Top = -39
+    Top = 211
     Width = 75
     Anchors = [akLeft, akBottom]
     Default = True
@@ -24,9 +24,9 @@ object AboutBox: TAboutBox
   end
   object Label1: TLabel
     Left = 8
-    Height = 32
+    Height = 40
     Top = 8
-    Width = 0
+    Width = 352
     Anchors = [akTop, akLeft, akRight]
     AutoSize = False
     Caption = 'Editor, der für Quelltexte in verschiedenen '#10'Programmiersprachen optimiert wird.'
@@ -37,17 +37,17 @@ object AboutBox: TAboutBox
     Left = 8
     Height = 112
     Top = 80
-    Width = 0
+    Width = 342
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Initiator, Urheber'
     ClientHeight = 93
-    ClientWidth = 0
+    ClientWidth = 332
     TabOrder = 1
     object Label3: TLabel
-      Left = 8
+      Left = 7
       Height = 16
       Top = 8
-      Width = 0
+      Width = 319
       Anchors = [akTop, akLeft, akRight]
       AutoSize = False
       Caption = 'Copyright 2020 Andreas Jakobsche'
@@ -108,6 +108,17 @@ object AboutBox: TAboutBox
       OnClick = FacebookBtnClick
       TabOrder = 5
     end
+    object ContributorsBtn: TBitBtn
+      Left = 184
+      Height = 30
+      Top = 63
+      Width = 104
+      HelpType = htKeyword
+      HelpKeyword = 'HTML/contributors.html'
+      Caption = '&Mitwirkende'
+      OnClick = ContributorsBtnClick
+      TabOrder = 6
+    end
   end
   object VersionLabel: TLabel
     Left = 8
@@ -116,16 +127,5 @@ object AboutBox: TAboutBox
     Width = 66
     Caption = 'Version 1.0'
     ParentColor = False
-  end
-  object ContributorsBtn: TBitBtn
-    Left = 16
-    Height = 30
-    Top = 208
-    Width = 104
-    HelpType = htKeyword
-    HelpKeyword = 'HTML/contributors.html'
-    Caption = '&Mitwirkende'
-    OnClick = ContributorsBtnClick
-    TabOrder = 2
   end
 end

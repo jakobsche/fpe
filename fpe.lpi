@@ -24,9 +24,15 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
-      <BuildNr Value="15"/>
+      <BuildNr Value="16"/>
       <Language Value="0407"/>
     </VersionInfo>
+    <MacroValues Count="4">
+      <Macro13 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro14 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro15 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro16 Name="LCLWidgetType" Value="cocoa"/>
+    </MacroValues>
     <BuildModes Count="2">
       <Item1 Name="Default" Default="True"/>
       <Item2 Name="Raspberry Pi">
@@ -130,6 +136,10 @@
       <IncludeFiles Value="$(ProjOutDir)"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
+    <CodeGeneration>
+      <TargetCPU Value="x86_64"/>
+      <TargetOS Value="darwin"/>
+    </CodeGeneration>
     <Linking>
       <Debugging>
         <DebugInfoType Value="dsDwarf3"/>

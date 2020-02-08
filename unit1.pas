@@ -460,7 +460,7 @@ end;
 
 procedure TForm1.HelpLicenseClick(Sender: TObject);
 begin
-  OpenDocument('LICENSE')
+  OpenDocument(ExtractFilePath(Application.ExeName) + 'LICENSE')
 end;
 
 procedure TForm1.MenuItem1Click(Sender: TObject);

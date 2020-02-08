@@ -9,6 +9,6 @@
 {"hash":109808366,"name":"taboutbox.patreonbtn.caption","sourcebytes":[38,80,97,116,114,101,111,110],"value":"&Patreon"},
 {"hash":188461213,"name":"taboutbox.mediumbtn.caption","sourcebytes":[38,77,101,100,105,117,109],"value":"&Medium"},
 {"hash":127647899,"name":"taboutbox.facebookbtn.caption","sourcebytes":[38,70,97,99,101,98,111,111,107],"value":"&Facebook"},
-{"hash":1899440,"name":"taboutbox.versionlabel.caption","sourcebytes":[86,101,114,115,105,111,110,32,49,46,48],"value":"Version 1.0"},
-{"hash":38129477,"name":"taboutbox.contributorsbtn.caption","sourcebytes":[38,77,105,116,119,105,114,107,101,110,100,101],"value":"&Mitwirkende"}
+{"hash":38129477,"name":"taboutbox.contributorsbtn.caption","sourcebytes":[38,77,105,116,119,105,114,107,101,110,100,101],"value":"&Mitwirkende"},
+{"hash":1899440,"name":"taboutbox.versionlabel.caption","sourcebytes":[86,101,114,115,105,111,110,32,49,46,48],"value":"Version 1.0"}
 ]}

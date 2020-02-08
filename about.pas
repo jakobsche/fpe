@@ -12,14 +12,14 @@ type
   { TAboutBox }
 
   TAboutBox = class(TForm)
-    BitBtn1: TBitBtn;
+    OKBtn: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
+    ContributorsBtn: TBitBtn;
     FacebookBtn: TBitBtn;
     MediumBtn: TBitBtn;
     PatreonBtn: TBitBtn;
-    ContributorsBtn: TBitBtn;
     GroupBox1: TGroupBox;
     Label1: TLabel;
     VersionLabel: TLabel;
