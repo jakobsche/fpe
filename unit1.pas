@@ -6,10 +6,10 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, LazHelpHTML,
-  ExtCtrls, ComCtrls, SynEdit, SynHighlighterPas, SynHighlighterJScript,
+  ComCtrls, SynEdit, SynHighlighterPas, SynHighlighterJScript,
   SynHighlighterXML, SynHighlighterHTML, SynHighlighterMulti,
   SynEditHighlighter, SynHighlighterCpp, SynCompletion, SynHighlighterLFM,
-  SynHighlighterAny, PrintersDlgs, SynEditTypes, SynMakeSyn;
+  PrintersDlgs, SynEditTypes, SynHighlighterMakefile;
 
 type
 
@@ -45,6 +45,7 @@ type
     FSynEdit: TSynEdit;
     function GetItemCount: Integer;
     function GetItems(AnIndex: Integer): THighlighterData; overload;
+    procedure SetItemIndex(AValue: Integer);
     procedure SetSaveDialog(AValue: TSaveDialog);
     procedure SetSynEdit(AValue: TSynEdit);
     property ItemList: TList read GetItemList;
@@ -61,7 +62,7 @@ type
     property ItemCount: Integer read GetItemCount;
     property Items[AnIndex: Integer]: THighlighterData read GetItems;
   published
-    property ItemIndex: Integer read FItemIndex write FItemIndex;
+    property ItemIndex: Integer read FItemIndex write SetItemIndex;
     property SaveDialog: TSaveDialog read FSaveDialog write SetSaveDialog;
     property SynEdit: TSynEdit read FSynEdit write SetSynEdit;
   end;
@@ -129,7 +130,7 @@ type
     ViewPas: TMenuItem;
     ViewJS: TMenuItem;
     SynJScriptSyn: TSynJScriptSyn;
-    MenuItem3: TMenuItem;
+    HelpContents: TMenuItem;
     MenuItem4: TMenuItem;
     EditMenu: TMenuItem;
     MenuItem6: TMenuItem;
@@ -165,20 +166,20 @@ type
     procedure HelpLicenseClick(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure FormsHideClick(Sender: TObject);
+    procedure HelpContentsClick(Sender: TObject);
     procedure NewItemClick(Sender: TObject);
     procedure OpenItemClick(Sender: TObject);
     procedure SaveAsItemClick(Sender: TObject);
     procedure SaveItemClick(Sender: TObject);
-    procedure SynEditKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
-      );
     procedure SynEditStatusChange(Sender: TObject; Changes: TSynStatusChanges);
     procedure ViewSynClick(Sender: TObject);
+    procedure XMLPropStorageRestoreProperties(Sender: TObject);
+    procedure XMLPropStorageRestoringProperties(Sender: TObject);
   private
     FFileName: string;
     procedure SetFileName(Value: string);
   public
-    HLSwitch: THighlighterSwitch;
-    SynMakeSyn: TSynMakefileSyn;
+    SynHighlighterMakefile: TSynMakefileSyn;
     function GetConfigFileName: string;
     procedure OpenFile(AFileName: string);
     function Save: Boolean;
@@ -186,6 +187,7 @@ type
     function GuessHighlighter: TSynCustomHighLighter;
     procedure PrintTestPage;
   published
+    HLSwitch: THighlighterSwitch;
     property FileName: string read FFileName write SetFileName;
   end;
 
@@ -194,7 +196,8 @@ var
 
 implementation
 
-uses About, FormEx, HeadFm, LCLIntf, Patch, Printers, Types;
+uses About, FormEx, HeadFm, HelpIntfs, LazHelpIntf, LCLIntf, Patch, Printers,
+  Streaming2, Types;
 
 {$R *.lfm}
 
@@ -226,6 +229,13 @@ end;
 function THighlighterSwitch.GetItems(AnIndex: Integer): THighlighterData;
 begin
   Pointer(Result) := ItemList[AnIndex]
+end;
+
+procedure THighlighterSwitch.SetItemIndex(AValue: Integer);
+begin
+  if FItemIndex=AValue then Exit;
+  {Switch(AValue);}
+  FItemIndex:=AValue;
 end;
 
 procedure THighlighterSwitch.SetSaveDialog(AValue: TSaveDialog);
@@ -354,7 +364,7 @@ var
   i, SlaveIndex: Integer;
   F: TForm1;
 begin
-  SynMakeSyn := TSynMakefileSyn.Create(Self);
+  SynHighlighterMakefile := TSynMakefileSyn.Create(Self);
   FormAdjust(Self);
   HLSwitch := THighlighterSwitch.Create(Self);
   HLSwitch.SynEdit := SynEdit;
@@ -369,14 +379,14 @@ begin
     AddItem(ViewText, nil);
     AddItem(ViewLFm, SynLFmSyn);
     AddItem(ViewFreePascal, SynFreePascalSyn);
-    AddItem(ViewMakefile, SynMakeSyn);
+    AddItem(ViewMakefile, SynHighlighterMakefile);
     Switch(ViewFreePascal)
   end;
   with HTMLHelpDataBase do begin
     {$ifdef Darwin}
       BaseURL := 'file://' + ExtractFilePath(Application.ExeName) + 'help'
     {$else}
-      {$ifndef Unix}
+      {$ifndef UNIX}
         BaseURL := ExtractFilePath(Application.ExeName) + 'help'
       {$endif}
     {$endif}
@@ -428,7 +438,7 @@ end;
 
 procedure TForm1.FormsNewClick(Sender: TObject);
 begin
-  TForm1.Create(Application)
+  TForm1.Create(HeadForm).Name := '';
 end;
 
 procedure TForm1.FormsShowClick(Sender: TObject);
@@ -459,8 +469,17 @@ begin
 end;
 
 procedure TForm1.HelpLicenseClick(Sender: TObject);
+var
+  NewWindow: TForm1;
 begin
-  OpenDocument(ExtractFilePath(Application.ExeName) + 'LICENSE')
+  {OpenDocument(ExtractFilePath(Application.ExeName) + 'LICENSE')}
+  NewWindow := TForm1.Create(Application);
+  with NewWindow do begin
+    HLSwitch.Switch(ViewText);
+    OpenFile(ExtractFilePath(Application.ExeName) + 'LICENSE');
+    SynEdit.ReadOnly := True;
+    Show
+  end;
 end;
 
 procedure TForm1.MenuItem1Click(Sender: TObject);
@@ -471,6 +490,18 @@ end;
 procedure TForm1.FormsHideClick(Sender: TObject);
 begin
   Hide
+end;
+
+procedure TForm1.HelpContentsClick(Sender: TObject);
+var
+  ErrMsg: string;
+  R: TShowHelpResult;
+begin
+  R := HTMLHelpDatabase.ShowHelpFile(nil, nil, 'Inhaltsverzeichnis', 'index.html', ErrMsg);
+  case R of
+    shrSuccess:;
+    else ShowMessageFmt('%d: %s', [R, ErrMsg]);
+  end;
 end;
 
 procedure TForm1.FileExitClick(Sender: TObject);
@@ -553,7 +584,7 @@ begin
   if SynEdit.Modified then begin
     if FileName = '' then x := 'Die Datei'
     else x := FileName;
-    case MessageDlg(Format('%s wurde noch nicht gespeihert. Soll die Datei jetzt gespeichert werden?', [x]),
+    case MessageDlg(Format('%s wurde noch nicht gespeichert. Soll die Datei jetzt gespeichert werden?', [x]),
       mtConfirmation, mbYesNoCancel, 0) of
       mrYes:
         if Save then
@@ -586,12 +617,6 @@ begin
   Save
 end;
 
-procedure TForm1.SynEditKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-
-end;
-
 procedure TForm1.SynEditStatusChange(Sender: TObject; Changes: TSynStatusChanges
   );
 const
@@ -612,6 +637,16 @@ begin
   HLSwitch.Switch(Sender as TMenuItem)
 end;
 
+procedure TForm1.XMLPropStorageRestoreProperties(Sender: TObject);
+begin
+  {HLSwitch.Switch(HLSwitch.ItemIndex);}
+end;
+
+procedure TForm1.XMLPropStorageRestoringProperties(Sender: TObject);
+begin
+  HLSwitch.Switch(HLSwitch.ItemIndex)
+end;
+
 procedure TForm1.SetFileName(Value: string);
 begin
   FFileName := Value;
@@ -628,7 +663,8 @@ end;
 
 procedure TForm1.OpenFile(AFileName: string);
 begin
-  ShowMessage(AFileName)
+  SynEdit.Lines.LoadFromFile(AFileName);
+  FileName := AFileName
 end;
 
 function TForm1.Save: Boolean;
@@ -677,6 +713,31 @@ begin
 end;
 
 initialization
+
+RegisterForStreaming(TForm1);
+RegisterForStreaming(THighlighterData);
+RegisterForStreaming(TFontDialog);
+RegisterForStreaming(THTMLBrowserHelpViewer);
+RegisterForStreaming(THTMLHelpDatabase);
+RegisterForStreaming(TMainMenu);
+RegisterForStreaming(TMenuItem);
+RegisterForStreaming(TPrintDialog);
+RegisterForStreaming(TStatusBar);
+RegisterForStreaming(TSynCompletion);
+RegisterForStreaming(TSynFreePascalSyn);
+RegisterForStreaming(TSynLFMSyn);
+RegisterForStreaming(TPrinterSetupDialog);
+RegisterForStreaming(TSynCppSyn);
+RegisterForStreaming(TSynMultiSyn);
+RegisterForStreaming(TSynHTMLSyn);
+RegisterForStreaming(TSynXMLSyn);
+RegisterForStreaming(TSynJScriptSyn);
+RegisterForStreaming(TOpenDialog);
+RegisterForStreaming(TSaveDialog);
+RegisterForStreaming(TSynEdit);
+RegisterForStreaming(TSynPasSyn);
+RegisterForStreaming(TSynMakefileSyn);
+RegisterForStreaming(THighlighterSwitch);
 
 end.
 

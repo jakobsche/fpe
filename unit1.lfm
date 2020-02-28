@@ -14,6 +14,7 @@ object Form1: TForm1
   OnDestroy = FormDestroy
   OnDropFiles = FormDropFiles
   Position = poDefault
+  SessionProperties = 'Height;Left;SynEdit.Lines;Top;Width'
   LCLVersion = '2.0.6.0'
   inline SynEdit: TSynEdit
     Left = 0
@@ -29,7 +30,6 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
     TabOrder = 0
-    OnKeyDown = SynEditKeyDown
     Gutter.Width = 57
     Gutter.MouseActions = <>
     RightGutter.Width = 0
@@ -546,6 +546,7 @@ object Form1: TForm1
       end
       object SaveItem: TMenuItem
         Caption = '&Speichern'
+        ShortCut = 4179
         OnClick = SaveItemClick
       end
       object SaveAsItem: TMenuItem
@@ -640,6 +641,7 @@ object Form1: TForm1
       end
       object ViewFreePascal: TMenuItem
         Caption = '&Free Pascal'
+        OnClick = ViewSynClick
       end
       object ViewHTML: TMenuItem
         Caption = '&HTML'
@@ -686,6 +688,7 @@ object Form1: TForm1
       Caption = 'Fenster'
       object FormsNew: TMenuItem
         Caption = '&Neues Fenster'
+        ShortCut = 4174
         OnClick = FormsNewClick
       end
       object FormsTile: TMenuItem
@@ -714,9 +717,10 @@ object Form1: TForm1
     end
     object HelpMenu: TMenuItem
       Caption = '&Hilfe'
-      object MenuItem3: TMenuItem
+      object HelpContents: TMenuItem
         Caption = 'Hilfeinhalte'
         ShortCut = 112
+        OnClick = HelpContentsClick
       end
       object MenuItem4: TMenuItem
         Caption = 'Hilfe-&Index'

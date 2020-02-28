@@ -24,14 +24,15 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
-      <BuildNr Value="17"/>
+      <BuildNr Value="19"/>
       <Language Value="0407"/>
     </VersionInfo>
-    <MacroValues Count="4">
+    <MacroValues Count="5">
       <Macro13 Name="LCLWidgetType" Value="cocoa"/>
       <Macro14 Name="LCLWidgetType" Value="cocoa"/>
       <Macro15 Name="LCLWidgetType" Value="cocoa"/>
       <Macro16 Name="LCLWidgetType" Value="cocoa"/>
+      <Macro17 Name="LCLWidgetType" Value="cocoa"/>
     </MacroValues>
     <BuildModes Count="2">
       <Item1 Name="Default" Default="True"/>
@@ -70,27 +71,30 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="6">
+    <RequiredPackages Count="7">
       <Item1>
-        <PackageName Value="KiaraStylist"/>
+        <PackageName Value="streams"/>
       </Item1>
       <Item2>
-        <PackageName Value="Printer4Lazarus"/>
+        <PackageName Value="KiaraStylist"/>
       </Item2>
       <Item3>
-        <PackageName Value="rtlpatch"/>
+        <PackageName Value="Printer4Lazarus"/>
       </Item3>
       <Item4>
-        <PackageName Value="LCLPatch"/>
+        <PackageName Value="rtlpatch"/>
       </Item4>
       <Item5>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="LCLPatch"/>
       </Item5>
       <Item6>
-        <PackageName Value="LCL"/>
+        <PackageName Value="SynEdit"/>
       </Item6>
+      <Item7>
+        <PackageName Value="LCL"/>
+      </Item7>
     </RequiredPackages>
-    <Units Count="6">
+    <Units Count="5">
       <Unit0>
         <Filename Value="fpe.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -112,22 +116,18 @@
         <UnitName Value="About"/>
       </Unit2>
       <Unit3>
-        <Filename Value="makefile.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit3>
-      <Unit4>
         <Filename Value="global.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Global"/>
-      </Unit4>
-      <Unit5>
+      </Unit3>
+      <Unit4>
         <Filename Value="headfm.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="HeadForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="HeadFm"/>
-      </Unit5>
+      </Unit4>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

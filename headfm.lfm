@@ -1,6 +1,7 @@
 inherited HeadForm: THeadForm
-  Left = 560
-  Top = 50
+  Left = 580
+  Top = 183
   Caption = 'HeadForm'
+  OnCreate = FormCreate
   WindowState = wsNormal
 end

@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  About, Forms, Unit1, lclpatch, HeadFm;
+  About, Forms, Unit1, lclpatch, HeadFm, Streaming2, MasterFm;
 
 {$R *.res}
 
@@ -17,7 +17,6 @@ begin
   Application.Initialize;
   Application.CreateForm(THeadForm, HeadForm);
   Application.CreateForm(TAboutBox, AboutBox);
-  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
 

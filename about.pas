@@ -12,11 +12,12 @@ type
   { TAboutBox }
 
   TAboutBox = class(TForm)
+    IntroBtn: TBitBtn;
+    ContributorsBtn: TBitBtn;
     OKBtn: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
-    ContributorsBtn: TBitBtn;
     FacebookBtn: TBitBtn;
     MediumBtn: TBitBtn;
     PatreonBtn: TBitBtn;
@@ -30,6 +31,7 @@ type
     procedure ContributorsBtnClick(Sender: TObject);
     procedure FacebookBtnClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure IntroBtnClick(Sender: TObject);
     procedure MediumBtnClick(Sender: TObject);
     procedure PatreonBtnClick(Sender: TObject);
   private
@@ -53,6 +55,11 @@ procedure TAboutBox.FormCreate(Sender: TObject);
 begin
   FormAdjust(Self);
   VersionLabel.Caption := Format('Version %s', [Version])
+end;
+
+procedure TAboutBox.IntroBtnClick(Sender: TObject);
+begin
+  IntroBtn.ShowHelp;
 end;
 
 procedure TAboutBox.MediumBtnClick(Sender: TObject);
