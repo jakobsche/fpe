@@ -39,6 +39,8 @@
 {"hash":224059486,"name":"tform1.formsadjust.caption","sourcebytes":[38,65,108,108,101,32,97,110,111,114,100,110,101,110],"value":"&Alle anordnen"},
 {"hash":143536510,"name":"tform1.formshide.caption","sourcebytes":[38,86,101,114,98,101,114,103,101,110],"value":"&Verbergen"},
 {"hash":97402046,"name":"tform1.formsshow.caption","sourcebytes":[65,110,38,122,101,105,103,101,110,32,46,46,46],"value":"An&zeigen ..."},
+{"hash":154301973,"name":"tform1.toolsmenu.caption","sourcebytes":[38,87,101,114,107,122,101,117,103,101],"value":"&Werkzeuge"},
+{"hash":159057294,"name":"tform1.envitem.caption","sourcebytes":[38,85,109,103,101,98,117,110,103,115,118,97,114,105,97,98,108,101,110],"value":"&Umgebungsvariablen"},
 {"hash":45023941,"name":"tform1.helpmenu.caption","sourcebytes":[38,72,105,108,102,101],"value":"&Hilfe"},
 {"hash":213806869,"name":"tform1.helpcontents.caption","sourcebytes":[72,105,108,102,101,105,110,104,97,108,116,101],"value":"Hilfeinhalte"},
 {"hash":190867128,"name":"tform1.menuitem4.caption","sourcebytes":[72,105,108,102,101,45,38,73,110,100,101,120],"value":"Hilfe-&Index"},

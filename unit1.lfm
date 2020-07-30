@@ -15,7 +15,7 @@ object Form1: TForm1
   OnDropFiles = FormDropFiles
   Position = poDefault
   SessionProperties = 'Height;Left;SynEdit.Lines;Top;Width'
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '2.0.8.0'
   inline SynEdit: TSynEdit
     Left = 0
     Height = 501
@@ -23,6 +23,7 @@ object Form1: TForm1
     Width = 638
     HelpType = htKeyword
     Align = alClient
+    BlockTabIndent = 4
     Font.Height = -13
     Font.Name = 'Courier New'
     Font.Pitch = fpFixed
@@ -713,6 +714,12 @@ object Form1: TForm1
       object FormsShow: TMenuItem
         Caption = 'An&zeigen ...'
         OnClick = FormsShowClick
+      end
+    end
+    object ToolsMenu: TMenuItem
+      Caption = '&Werkzeuge'
+      object EnvItem: TMenuItem
+        Caption = '&Umgebungsvariablen'
       end
     end
     object HelpMenu: TMenuItem

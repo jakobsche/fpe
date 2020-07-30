@@ -78,6 +78,8 @@ type
     MainMenu: TMainMenu;
     HelpMenu: TMenuItem;
     MenuItem1: TMenuItem;
+    EnvItem: TMenuItem;
+    ToolsMenu: TMenuItem;
     ViewMakefile: TMenuItem;
     ViewFreePascal: TMenuItem;
     PrintDialog: TPrintDialog;
